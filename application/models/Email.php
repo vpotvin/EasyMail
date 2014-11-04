@@ -13,7 +13,7 @@ class Email extends CI_Model {
     
     function get_all()
     {
-        $query = $this->db->get('emails');
+        $query = $this->db->get('Emails');
         return $query->result_array();
     }
 }
