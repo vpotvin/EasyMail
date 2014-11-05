@@ -11,7 +11,9 @@ class Contacts extends CI_Controller {
 
 	public function listcontacts()
 	{
-		echo "testint two";
+		$this->load->view('_header');
+		$this->load->view('listcontacts');
+		$this->load->view("_footer");
 		//$data = $this->Email->get_all();
 		//echo $data[0]['addr'];
 	}
