@@ -7,7 +7,7 @@ class Contacts_model extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
-        $this->load->database();
+        load->database();
 
     }
     
