@@ -1,4 +1,4 @@
-<?
+<?php 
 class Contacts_model extends CI_Model {
 
     var $emailAddr   = '';
