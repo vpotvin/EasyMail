@@ -4,7 +4,7 @@ class Contacts extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Email');
+		//$this->load->model('Email');
 	}
 
 
@@ -12,8 +12,8 @@ class Contacts extends CI_Controller {
 	public function listcontacts()
 	{
 		echo "testint two";
-		$data = $this->Email->get_all();
-		echo $data[0]['addr'];
+		//$data = $this->Email->get_all();
+		//echo $data[0]['addr'];
 	}
 }
 
