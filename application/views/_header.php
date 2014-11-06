@@ -6,7 +6,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<link rel='stylesheet' type='text/css' href='css/main.css' media='screen'>
+		<link rel='stylesheet' type='text/css' href='/css/main.css' media='screen'>
 
 		<!--[if lt IE 9 ]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
