@@ -1,5 +1,5 @@
 <div class='col-lg-4 col-lg-offset-4'>
-	<form action="loginproc.php" method="POST" role="form" class="form-horizontal">
+	<form action="loginproc" method="POST" role="form" class="form-horizontal">
 		<div class="form-group">
 			<label for="username">Username:</label>
 			<input type="text" name="username" class="form-control">

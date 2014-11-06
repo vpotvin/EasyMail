@@ -11,5 +11,13 @@ class Login extends CI_Controller {
 		$this->load->view('loginForm');
 		$this->load->view("_footer");
 	}
+
+	public function processform(){
+		$username = $this->input->post("username");
+		$password = $this->input->post("password");
+		echo $password;
+		echo md5($username);
+	}
+
 }
 ?>
