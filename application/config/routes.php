@@ -40,7 +40,7 @@
 
 
 $route['contacts/listcontacts'] = 'contacts/listcontacts';
-$route['login/displayForm'] = 'login';
+$route['login'] = 'login/displayform';
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 

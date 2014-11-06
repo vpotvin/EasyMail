@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function displayForm(){
+	public function displayform(){
 		$this->load->view('_header');
 		$this->load->view('loginForm');
 		$this->load->view("_footer");
