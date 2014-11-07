@@ -46,6 +46,7 @@ $route['contacts/listcontacts'] = 'contacts/listcontacts';
 // Login ------------------------------------------------------------------
 $route['login'] = 'login/displayform';
 $route['loginproc'] = 'login/processform';
+$route['logout'] = 'login/logout';
 // ------------------------------------------------------------------------
 
 // Codeigniter Defaults ---------------------------------------------------
