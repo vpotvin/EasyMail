@@ -13,9 +13,17 @@ class Contacts extends CI_Controller {
 
 
 	public function listcontacts() {
-		//$this->load->view('_header');
-		//$this->load->view('listcontacts');
-		//$this->load->view("_footer");
+		$data['flashMessages'] = [];
+		if($messages = $this->session->flashdata('flashMessages')){
+			foreach ($messages as $message) {
+				array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
+			}
+		}else {
+			$data['flashMessages'] = null;
+		}
+		$this->load->view('_header', $data);
+		$this->load->view('listcontacts');
+		$this->load->view("_footer");
 
 		// if(!$this->session->userdata('logged_in')) {
 		// 	redirect('/login/displayform/', 'refresh');

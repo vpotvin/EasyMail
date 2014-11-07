@@ -20,6 +20,7 @@
 		<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
+
 				<?php
 					// if(!$loggedin) {
 						echo "<form action='login.php' method='get' class='cred'>";
@@ -34,6 +35,7 @@
 						echo "</form>";
 					//}
 				?>
+
 				<form action='#' method='get' class='cred'>
 					<input type='submit' class='btn btn-link form-control' value='Compose Message'>
 				</form>
@@ -46,14 +48,18 @@
 					<input type='submit' class='btn btn-link' value='System Settings'>
 				</form>		
 			</div>
+
 			<?php 
-				if($flashMessage) { 
-					echo "<div class='col-lg-12'>";
-					echo "	<div class='alert alert-info fade in'>";
-					echo "		<a href='#' data-dismiss='alert' class='close'>X</a>";
-					echo 		$flashMessage;
-					echo "	</div>";
-					echo "</div>";
+				if($flashMessages) {
+					//print_r($flashMessages);
+					foreach ($flashMessages as $message) { 
+						echo "<div class='col-lg-12'>";
+						echo "	<div class='alert alert-" . $message['CSS'] . " fade in'>";
+						echo "		<a href='#' data-dismiss='alert' class='close'>X</a>";
+						echo 		$message['message'];
+						echo "	</div>";
+						echo "</div>";
+					}
 				}
 			?>
 

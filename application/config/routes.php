@@ -49,6 +49,10 @@ $route['processLogin'] = 'login/processLogin';
 $route['logout'] = 'login/logout';
 // ------------------------------------------------------------------------
 
+// File Upload ------------------------------------------------------------
+$route['fileUpload'] = 'fileUpload/displayform';
+// ------------------------------------------------------------------------
+
 // Codeigniter Defaults ---------------------------------------------------
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';

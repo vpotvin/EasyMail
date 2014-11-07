@@ -9,7 +9,15 @@ class Login extends CI_Controller {
 	}
 
 	public function displayform() {
-		$data['flashMessage'] = $this->session->flashdata('flashMessage');
+ 		$data['flashMessages'] = [];
+		if($messages = $this->session->flashdata('flashMessages')){
+			foreach ($messages as $message) {
+				array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
+			}
+		}else {
+			$data['flashMessages'] = null;
+		}
+
 		$this->load->view('_header', $data);
 		$this->load->view('loginForm');
 		$this->load->view("_footer");
@@ -27,14 +35,23 @@ class Login extends CI_Controller {
        		);
 
        		$this->session->set_userdata('logged_in', $sess_array);
-       		$this->session->set_flashdata('flashMessage', 'Successful Login');
+
+       		$fMessages = array(
+				array('Successful Login', 'success')
+			);
+
+			$this->session->set_flashdata('flashMessages', $fMessages);
+
        		// CHANGE TO REDIRECT TO HOME, THEN PREVIEOUS PAGE
        		redirect('/contacts/listcontacts/', 'refresh');
 
 
 		} else {
-			// FLASH HASH SHOULD BE AN ARRAY OF MESSAGES, THAT CONTAIN CSS CLASS FOR STYEL
-			$this->session->set_flashdata('flashMessage', 'Incorrect Credentials');
+			$fMessages = array(
+				array('Incorrect Credentials', 'danger')
+			);
+
+			$this->session->set_flashdata('flashMessages', $fMessages);
 			redirect('/login/displayform/', 'refresh');
 		}
 	}
@@ -42,7 +59,13 @@ class Login extends CI_Controller {
 
 	public function logout() {
 		$this->session->unset_userdata('logged_in');
-       	$this->session->set_flashdata('flashMessage', 'Successful Logout');
+
+		$fMessages = array(
+			array('Successful Logout', 'success')
+		);
+
+		$this->session->set_flashdata('flashMessages', $fMessages);
+
 		redirect('/contacts/listcontacts/', 'refresh');
 	}
 
