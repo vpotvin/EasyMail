@@ -45,7 +45,7 @@ $route['contacts/listcontacts'] = 'contacts/listcontacts';
 
 // Login ------------------------------------------------------------------
 $route['login'] = 'login/displayform';
-$route['loginproc'] = 'login/processform';
+$route['processLogin'] = 'login/processLogin';
 $route['logout'] = 'login/logout';
 // ------------------------------------------------------------------------
 

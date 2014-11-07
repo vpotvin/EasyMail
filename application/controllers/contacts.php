@@ -17,11 +17,15 @@ class Contacts extends CI_Controller {
 		//$this->load->view('listcontacts');
 		//$this->load->view("_footer");
 
-		if(!$this->session->userdata('logged_in')) {
-			redirect('/login/displayform/', 'refresh');
-		}
+		// if(!$this->session->userdata('logged_in')) {
+		// 	redirect('/login/displayform/', 'refresh');
+		// }
 
-		print_r($this->session->userdata('logged_in'));
+		// print_r($this->session->userdata('logged_in'));
+
+
+		//$data['flashMessage'] = $this->session->flashdata('flashMessage');
+		//$this->load->view('_header', $data);
 
 		$data = $this->contacts_model->get_all();
 		echo $data[0]['addr'];

@@ -5,15 +5,17 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->library('session');
+		$this->load->helper('url');
 	}
 
 	public function displayform() {
-		$this->load->view('_header');
+		$data['flashMessage'] = $this->session->flashdata('flashMessage');
+		$this->load->view('_header', $data);
 		$this->load->view('loginForm');
 		$this->load->view("_footer");
 	}
 
-	public function processform(){
+	public function processLogin(){
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 		$login_result = $this->user_model->login($username, $password);
@@ -25,22 +27,23 @@ class Login extends CI_Controller {
        		);
 
        		$this->session->set_userdata('logged_in', $sess_array);
-       		// SET FLASH
-       		// REDIRECT TO WELCOME
+       		$this->session->set_flashdata('flashMessage', 'Successful Login');
+       		// CHANGE TO REDIRECT TO HOME, THEN PREVIEOUS PAGE
+       		redirect('/contacts/listcontacts/', 'refresh');
 
 
 		} else {
-			// SET FLASH
-			// REDIRECT BACK TO LOGIN
+			// FLASH HASH SHOULD BE AN ARRAY OF MESSAGES, THAT CONTAIN CSS CLASS FOR STYEL
+			$this->session->set_flashdata('flashMessage', 'Incorrect Credentials');
+			redirect('/login/displayform/', 'refresh');
 		}
 	}
 
 
 	public function logout() {
 		$this->session->unset_userdata('logged_in');
-		echo "Logged OUT";
-		// SET FLASH
-		// REDIRECT TO WELCOME
+       	$this->session->set_flashdata('flashMessage', 'Successful Logout');
+		redirect('/contacts/listcontacts/', 'refresh');
 	}
 
 

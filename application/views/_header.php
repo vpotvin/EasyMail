@@ -35,15 +35,27 @@
 					//}
 				?>
 				<form action='#' method='get' class='cred'>
-					<input type='submit' class='btn btn-link form-control' value='Application Settings'>
+					<input type='submit' class='btn btn-link form-control' value='Compose Message'>
 				</form>
 
 				<form action='#' method='get' class='cred'>
-					<input type='submit' class='btn btn-link form-control' value='Upload'>
+					<input type='submit' class='btn btn-link form-control' value='Upload List'>
 				</form>
 
 				<form action='#' method='get' class='cred'>
-					<input type='submit' class='btn btn-link' value='Download'>
+					<input type='submit' class='btn btn-link' value='System Settings'>
 				</form>		
 			</div>
+			<?php 
+				if($flashMessage) { 
+					echo "<div class='col-lg-12'>";
+					echo "	<div class='alert alert-info fade in'>";
+					echo "		<a href='#' data-dismiss='alert' class='close'>X</a>";
+					echo 		$flashMessage;
+					echo "	</div>";
+					echo "</div>";
+				}
+			?>
+
+
 		</div>
