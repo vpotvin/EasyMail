@@ -30,7 +30,7 @@ class Login extends CI_Controller {
 		if($login_result){
 
 			$sess_array = array(
-         		'id' => $login_result[0]->uid,
+         		'uid' => $login_result[0]->uid,
          		'username' => $login_result[0]->username
        		);
 
