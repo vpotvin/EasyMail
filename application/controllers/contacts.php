@@ -13,6 +13,13 @@ class Contacts extends CI_Controller {
 
 
 	public function listcontacts() {
+		if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'refresh');
+		} else {
+			$data['logged_in'] = true;
+		}
+
+
 		$data['flashMessages'] = [];
 		if($messages = $this->session->flashdata('flashMessages')){
 			foreach ($messages as $message) {
@@ -25,9 +32,7 @@ class Contacts extends CI_Controller {
 		$this->load->view('listcontacts');
 		$this->load->view("_footer");
 
-		// if(!$this->session->userdata('logged_in')) {
-		// 	redirect('/login/displayform/', 'refresh');
-		// }
+
 
 		// print_r($this->session->userdata('logged_in'));
 
@@ -35,8 +40,8 @@ class Contacts extends CI_Controller {
 		//$data['flashMessage'] = $this->session->flashdata('flashMessage');
 		//$this->load->view('_header', $data);
 
-		$data = $this->contacts_model->get_all();
-		echo $data[0]['addr'];
+		//$data = $this->contacts_model->get_all();
+		//echo $data[0]['addr'];
 	}
 }
 

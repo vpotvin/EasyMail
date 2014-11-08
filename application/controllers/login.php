@@ -9,6 +9,12 @@ class Login extends CI_Controller {
 	}
 
 	public function displayform() {
+		if(!$this->session->userdata('logged_in')) {
+			$data['logged_in'] = false;
+		} else {
+			$data['logged_in'] = true;
+		}
+
  		$data['flashMessages'] = [];
 		if($messages = $this->session->flashdata('flashMessages')){
 			foreach ($messages as $message) {

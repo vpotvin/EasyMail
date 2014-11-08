@@ -1,10 +1,10 @@
 <?php
-class Upload extends CI_Controller {
+class Main extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('session');
-		$this->load->helper('url');
+		//$this->load->helper('url');
 		$this->load->model('email_model');
 	}
 
@@ -31,33 +31,16 @@ class Upload extends CI_Controller {
 		// --------------------------------------------------------------------
 
 
+		$arrds = $this->email_model->get_addr_for_user();
+		$data['emails'] = $arrds;
+
 
 
 		// LOAD VIEWS ---------------------------------------------------------
 		$this->load->view('_header', $data);
-		$this->load->view('uploadForm');
+		$this->load->view('main', $data);
 		$this->load->view("_footer");
 		// --------------------------------------------------------------------
 	}
-
-	public function processUpload() {
-		// MAKE SURE USER IS LOGGED IN ----------------------------------------
-		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
-		if(!$this->session->userdata('logged_in')) {
-			redirect('/login/displayform/', 'refresh');
-		}
-		// --------------------------------------------------------------------
-		$EmailFile = fopen($_FILES['emailFile']['tmp_name'], "r") or die("Unable to open file!");
-
-		while(!feof($EmailFile)) {
-			$addr = fgets($EmailFile);
-			$addr = trim($addr);
-			$this->email_model->insert_email($addr, null);
-		}
-		fclose($EmailFile);
-	}
-
-
-
 }
 ?>

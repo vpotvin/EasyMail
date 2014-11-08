@@ -17,38 +17,43 @@
 	</style>
 
 	<body>
-		<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-
-				<?php
-					// if(!$loggedin) {
-						echo "<form action='login.php' method='get' class='cred'>";
+		<nav class="navbar navbar-default" role="navigation">
+  			<div class="container-fluid">
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="/">
+        				<img alt="Brand" src="/images/newlogo.png">
+        				EasyMail
+      				</a>
+    			</div>
+    			<?php
+					if(!$logged_in) {
+						echo "<form action='/login' method='get' class='cred'>";
 						echo	"<input type='submit' class='btn btn-success' value='LOGIN'>";
 						echo "</form>";
-					// } else {
-						// echo "<form action='/~gq002/p1/logout.php' class='cred'>";
-						// echo	"<input type='submit' class='btn btn-danger' value='LOGOUT'>";
-						// echo "</form>";
-						echo "<form action='#' method='get' class='cred'>";
-						echo 	"<input type='submit' class='btn btn-info form-control' value='Change Password'>";
+					} else {
+						echo "<form action='/logout' class='cred'>";
+						echo	"<input type='submit' class='btn btn-danger' value='LOGOUT'>";
 						echo "</form>";
-					//}
+					}
 				?>
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+	          			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></a>
+	         			 <ul class="dropdown-menu" role="menu">
+	            			<li><a href="#">Upload Email List</a></li>
+	           				<li><a href="#">Download Email List</a></li>
+	            			<li><a href="#">Remove Duplicates</a></li>
+	           				<li class="divider"></li>
+	            			<li><a href="#">Saved Drafts</a></li>
+	            			<li class="divider"></li>
+	            			<li><a href="#">System Settings</a></li>
+	          			</ul>
+	        		</li>
+	        	</ul>
+		</nav>
 
-				<form action='#' method='get' class='cred'>
-					<input type='submit' class='btn btn-link form-control' value='Compose Message'>
-				</form>
-
-				<form action='#' method='get' class='cred'>
-					<input type='submit' class='btn btn-link form-control' value='Upload List'>
-				</form>
-
-				<form action='#' method='get' class='cred'>
-					<input type='submit' class='btn btn-link' value='System Settings'>
-				</form>		
-			</div>
-
+		<div class="container-fluid">
+		<div class="row">
 			<?php 
 				if($flashMessages) {
 					//print_r($flashMessages);
