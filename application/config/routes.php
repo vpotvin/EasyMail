@@ -55,6 +55,9 @@ $route['uploadfile'] = 'upload/index';
 
 // Codeigniter Defaults ---------------------------------------------------
 $route['default_controller'] = "main/index";
+$route['/'] = "main/index";
+
+
 $route['404_override'] = '';
 // ------------------------------------------------------------------------
 
