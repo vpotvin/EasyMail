@@ -49,7 +49,7 @@ class Login extends CI_Controller {
 			$this->session->set_flashdata('flashMessages', $fMessages);
 
        		// CHANGE TO REDIRECT TO HOME, THEN PREVIEOUS PAGE
-       		redirect('/contacts/listcontacts/', 'refresh');
+       		redirect('/', 'refresh');
 
 
 		} else {
@@ -72,7 +72,7 @@ class Login extends CI_Controller {
 
 		$this->session->set_flashdata('flashMessages', $fMessages);
 
-		redirect('/contacts/listcontacts/', 'refresh');
+		redirect('/', 'refresh');
 	}
 
 

@@ -53,6 +53,10 @@ $route['logout'] = 'login/logout';
 $route['uploadfile'] = 'upload/index';
 // ------------------------------------------------------------------------
 
+// File Download ----------------------------------------------------------
+$route['downloads/full'] = 'downloads/downloadById';
+// ------------------------------------------------------------------------
+
 // Codeigniter Defaults ---------------------------------------------------
 $route[''] = 'main/index';
 $route['/'] = 'main/index';

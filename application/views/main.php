@@ -1,15 +1,15 @@
 <div class='row'>
 	<div class="col-lg-2 main_box">
-		<form action='#' method='get'>
+		<form action='/downloads/full' method='get'>
 			<input type='submit' class='btn btn-info main_side_link' value='Download List'>
 		</form>
 
-		<form action='#' method='get'>
+		<form action='uploadfile' method='get'>
 			<input type='submit' class='btn btn-info main_side_link' value='Upload List'>
 		</form>
 
 		<form action='#' method='get'>
-			<input type='submit' class='btn btn-info main_side_link' value='Save Drafts'>
+			<input type='submit' class='btn btn-info main_side_link' value='Saved Drafts'>
 		</form>
 
 		<form action='#' method='get'>
