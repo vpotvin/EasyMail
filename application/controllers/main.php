@@ -11,11 +11,11 @@ class Main extends CI_Controller {
 	public function index(){
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
-		// if(!$this->session->userdata('logged_in')) {
-		// 	redirect('/login/displayform/', 'refresh');
-		// } else{
-		// 	$data["logged_in"] = true;
-		// }
+		if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform', 'refresh');
+		} else{
+			$data["logged_in"] = true;
+		}
 		// --------------------------------------------------------------------
 
 		// SET FLASH MESSAGES -------------------------------------------------
