@@ -54,8 +54,8 @@ $route['uploadfile'] = 'upload/index';
 // ------------------------------------------------------------------------
 
 // Codeigniter Defaults ---------------------------------------------------
-$route[''] = "main/index";
-$route["/"] = "main/index";
+$route[''] = 'main/index';
+$route['/'] = 'main/index';
 $route['default_controller'] = "main/index";
 
 
