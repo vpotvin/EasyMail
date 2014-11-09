@@ -12,7 +12,7 @@ class Main extends CI_Controller {
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
 		if(!$this->session->userdata('logged_in')) {
-			redirect('/login/displayform', 'refresh');
+			redirect('/login/displayform/', 'location');
 		} else{
 			$data["logged_in"] = true;
 		}
