@@ -45,16 +45,80 @@ class Upload extends CI_Controller {
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'refresh');
+		}else{
+			$data['logged_in'] = true;
 		}
 		// --------------------------------------------------------------------
 		$EmailFile = fopen($_FILES['emailFile']['tmp_name'], "r") or die("Unable to open file!");
-
+		$badAddr = "";
 		while(!feof($EmailFile)) {
 			$addr = fgets($EmailFile);
 			$addr = trim($addr);
-			$this->email_model->insert_email($addr, null);
+
+			if($addr != ""){
+				if (filter_var($addr, FILTER_VALIDATE_EMAIL)) {
+					if(!$this->email_model->insert_email($addr, null)){
+						 // this is almost alway a duplicate error but shoudl be confirmed
+						 ///print_r($this->db->_error_message()); 
+					}
+				} else{
+					$badAddr[] = $addr;
+					//print_r($addr);
+					//print_r($badAddr);
+				}
+			}
 		}
 		fclose($EmailFile);
+
+		if (count($badAddr) > 1) {
+
+			$data['flashMessages'] = [];
+
+			if($messages = $this->session->flashdata('flashMessages')){
+				foreach ($messages as $message) {
+					array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
+				}
+			}else {
+				$data['flashMessages'] = null;
+			}
+
+			$data['badAddr'] = $badAddr;
+			$this->load->view('_header', $data);
+			$this->load->view('confirmbademails', $data);
+			$this->load->view("_footer");
+		} else{
+			$fMessages = array(
+				array('All Emails Address Uploaded Successfully', 'success')
+			);
+
+			$this->session->set_flashdata('flashMessages', $fMessages);
+
+			redirect("/", 'refresh');
+		}
+	}
+
+	public function procConfirm() {
+	// MAKE SURE USER IS LOGGED IN ----------------------------------------
+	// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
+		if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'refresh');
+		}else{
+			$data['logged_in'] = true;
+		}
+
+		$eaddr = $this->input->post()['formConfirm'];
+		if($eaddr){
+			foreach( $eaddr as $a){
+				$this->email_model->insert_email($a, null);
+			}
+		}
+		$fMessages = array(
+			array('All Emails Address Uploaded Successfully', 'success')
+		);
+
+		$this->session->set_flashdata('flashMessages', $fMessages);
+
+		redirect("/", 'refresh');
 	}
 
 

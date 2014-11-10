@@ -1,19 +1,18 @@
 <?php
-class Main extends CI_Controller {
+class Group extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->helper('url');
-		$this->load->model('email_model');
 		$this->load->model('group_model');
 	}
 
-	public function index(){
+	public function create(){
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
 		if(!$this->session->userdata('logged_in')) {
-			redirect('/login/displayform/', 'location');
+			redirect('/login/displayform/', 'refresh');
 		} else{
 			$data["logged_in"] = true;
 		}
@@ -31,20 +30,25 @@ class Main extends CI_Controller {
 		}
 		// --------------------------------------------------------------------
 
-
-		$arrds = $this->email_model->get_addr_for_user();
-		$data['emails'] = $arrds;
-
-		$groups = $this->group_model->get_group_for_user();
-		$data['groups'] = $groups;
-
-
-
 		// LOAD VIEWS ---------------------------------------------------------
 		$this->load->view('_header', $data);
-		$this->load->view('main', $data);
+		$this->load->view('createGroup');
 		$this->load->view("_footer");
 		// --------------------------------------------------------------------
+	}
+
+	public function procCreate() {
+		// MAKE SURE USER IS LOGGED IN ----------------------------------------
+		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
+		if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'refresh');
+		} else{
+			$data["logged_in"] = true;
+		}
+		// --------------------------------------------------------------------
+
+		$this->group_model->create($this->input->post("groupName"), $this->input->post('groupColor'));
+		redirect("/", 'refresh');
 	}
 }
 ?>

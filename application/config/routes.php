@@ -51,11 +51,16 @@ $route['logout'] = 'login/logout';
 
 // File Upload ------------------------------------------------------------
 $route['uploadfile'] = 'upload/index';
+$route['procConfirm'] = 'upload/procConfirm';
 // ------------------------------------------------------------------------
 
 // File Download ----------------------------------------------------------
 $route['downloads/full'] = 'downloads/downloadById';
 // ------------------------------------------------------------------------
+
+// GROUPS -----------------------------------------------------------------
+$route['group/create'] = 'group/create';
+//
 
 // Codeigniter Defaults ---------------------------------------------------
 $route[''] = 'main/index';
