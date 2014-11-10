@@ -16,3 +16,12 @@
 	margin-bottom: 10px;
 	width: 100%;
 }
+
+.black_link{
+	color: black;
+}
+
+.display_group {
+	float: right;
+	display: inline;
+}

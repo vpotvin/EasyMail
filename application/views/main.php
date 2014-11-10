@@ -51,7 +51,7 @@
 				<?php
 					foreach ($groups as $g) {
 						echo "<tr>";
-						echo 	"<td>" . $g['group_name'] . "</td>";
+						echo 	"<td><span class='box_label label label-" . $g['group_color'] . "'><a class='black_link' href=/group/display/" . $g['gid'] . ">" . $g['group_name'] . "</a></span></td>";
 						echo "</tr>";
 					}
 				?>

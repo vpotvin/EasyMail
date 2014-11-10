@@ -30,6 +30,21 @@ class email_model extends CI_Model {
         $query = $this -> db -> get();
         return $query->result_array();
     }
+
+    public function search($searchTerm){
+        $session_data = $this->session->userdata('logged_in');
+        $this->uid = $session_data['uid'];
+
+        $this -> db -> select('email_address');
+        $this -> db -> from('email_addr');
+
+        $this -> db -> like('email_address' ,$searchTerm);
+
+        $this -> db -> where('email_addr.uid', $this->uid);
+        $query = $this -> db -> get();
+        return $query->result_array();
+
+    }
 }
 
 ?>

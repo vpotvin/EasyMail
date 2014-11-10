@@ -21,11 +21,23 @@ Class group_model extends CI_Model {
   public function get_group_for_user(){
         $session_data = $this->session->userdata('logged_in');
         $this->uid = $session_data['uid'];
-        $this -> db -> select('group_name', 'group_color');
+        $this -> db -> select('gid');
+        $this -> db -> select('group_name');
+        $this -> db -> select('group_color');
         $this -> db -> from('user_groups');
         $this -> db -> where('uid', $this->uid);
         $query = $this -> db -> get();
         return $query->result_array();
     }
+
+  public function get_addr_by_id($id){
+    $query = $this->db->query("SELECT email_addr.email_address 
+                                FROM email_addr JOIN email_addr_groups 
+                                ON email_addr.eaid = email_addr_groups.eaid JOIN user_groups 
+                                ON email_addr_groups.gid = user_groups.gid 
+                                WHERE user_groups.gid = $id");
+    
+    return $query->result_array();
+  }
 }
 ?>

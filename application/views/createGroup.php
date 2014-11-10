@@ -7,11 +7,12 @@
 		<div class="form-group">
 			<label for="groupColor">Group Color:</label>
 			<select name="groupColor" class="form-control">
-  				<option>Grey</option>
-  				<option>Dark Blue</option>
-  				<option>Green</option>
-  				<option>Light Blue</option>
-  				<option>Orange Red</option>
+  				<option value="default">	Grey		</option>
+  				<option value="primary">	Dark Blue 	</option>
+  				<option value="success">	Green 		</option>
+  				<option value="info">		Light Blue 	</option>
+  				<option value="warning"> 	Orange 		</option>
+  				<option value="danger"> 	Red 		</option>
 			</select>
 		</div>
 
