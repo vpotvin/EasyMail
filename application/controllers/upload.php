@@ -6,6 +6,7 @@ class Upload extends CI_Controller {
 		$this->load->library('session');
 		$this->load->helper('url');
 		$this->load->model('email_model');
+		$this->load->model("group_model");
 	}
 
 	public function index(){
@@ -120,6 +121,14 @@ class Upload extends CI_Controller {
 
 		redirect("/", 'refresh');
 	}
+
+	public function ajaxInsert(){
+		$gid = $this->input->post()['gid'];
+		$addr = $this->input->post()['addr'];
+		$this->group_model->insert($gid, $addr);
+		echo true;
+	}
+
 
 
 

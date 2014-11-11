@@ -39,5 +39,17 @@ Class group_model extends CI_Model {
     
     return $query->result_array();
   }
+
+  // this should have it's own model
+  public function insert($group_id, $addr){
+    $query = "SELECT eaid FROM email_addr WHERE email_address = '$addr'";
+    $result = $this->db->query($query);
+    $r = $result->row();
+    $eaid = $r->eaid;
+    $sql = "INSERT INTO email_addr_groups (gid, eaid) 
+        VALUES ($group_id, $eaid)";
+
+    $this->db->query($sql);
+  }
 }
 ?>

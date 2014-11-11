@@ -13,8 +13,11 @@ class Search extends CI_Controller {
 				$results = $this->email_model->search($search_term);
 				foreach ($results as $r) {
 					echo "<tr>";
-					echo 	"<td draggable='true'>";
+					echo 	"<td>";
 					echo 		$r['email_address'];
+					echo 	"</td>";
+					echo 	"<td>";
+					echo 		"<a href='javascript:void(0)' onclick='addToGroup(this);' class='addToGroup'>Add To Group</a>";
 					echo 	"</td>";
 					echo "<tr>";
 				}
@@ -23,3 +26,5 @@ class Search extends CI_Controller {
 	}
 }
 ?>
+
+

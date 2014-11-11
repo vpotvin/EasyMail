@@ -5,7 +5,7 @@
 				<th>Email Address</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id='tableBody'>
 			<?php
 				foreach($addrs as $a){
 					echo "<tr>";
@@ -33,12 +33,24 @@
 </div><!-- /.col-lg-6 -->
 
 <script>
-	var gid = <?php echo $groupID; ?>;
+	var gidin = <?php echo $groupID; ?>;
+	var linkClick = $(".addToGroup");
+	linkClick.onclick = addToGroup(this);
+
 	function showResult(str) {
 		if(str != ""){
 			console.log(str);
 			$( "#showResults" ).load("/search/index/" + str);
 		}
+	}
+
+	function addToGroup(str) {
+		var data = str.parentNode.parentNode.cells[0].innerHTML;
+		$.post( "/ajaxInsert", { gid: gidin, addr: data },function(returnData){
+			if(returnData){
+				$("#tableBody").append("<tr><td>" + str.parentNode.parentNode.cells[0].innerHTML + "</td></tr>");
+			}
+		});
 	}
 </script>
 

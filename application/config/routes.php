@@ -52,6 +52,7 @@ $route['logout'] = 'login/logout';
 // File Upload ------------------------------------------------------------
 $route['uploadfile'] = 'upload/index';
 $route['procConfirm'] = 'upload/procConfirm';
+$route['ajaxInsert'] = 'upload/ajaxInsert';
 // ------------------------------------------------------------------------
 
 // File Download ----------------------------------------------------------
@@ -66,6 +67,7 @@ $route['group/display/(:num)'] = 'group/display/$1';
 // SEARCH -----------------------------------------------------------------
 $route['/search/index/(:any)'] = 'search/index/$1';
 // ------------------------------------------------------------------------
+
 
 // Codeigniter Defaults ---------------------------------------------------
 $route[''] = 'main/index';
