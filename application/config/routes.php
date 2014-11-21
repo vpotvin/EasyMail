@@ -38,6 +38,7 @@
 |
 */
 
+$route["info/info"] = 'info/info';
 
 // For Testing ------------------------------------------------------------
 $route['contacts/listcontacts'] = 'contacts/listcontacts';

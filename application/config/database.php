@@ -49,6 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
+$db['default']['port'] = '3000';
 $db['default']['username'] = 'se';
 $db['default']['password'] = 'seproject';
 $db['default']['database'] = 'SE';

@@ -22,6 +22,7 @@ $ mysql -uroot
 Setup database to test if everything is working. 
 
 CREATE USER ‘se’@’localhost’ IDENTIFIED BY ‘seproject’;
+CREATE USER 'se'@'localhost' IDENTIFIED BY 'seproject';
 
 GRANT ALL PRIVELEGES ON *.* TO ‘se’@’localhost’ WITH GRANT OPTION;
 
