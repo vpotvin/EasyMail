@@ -57,7 +57,8 @@ $route['ajaxInsert'] = 'upload/ajaxInsert';
 // ------------------------------------------------------------------------
 
 // File Download ----------------------------------------------------------
-$route['downloads/full'] = 'downloads/downloadById';
+$route['downloads/full'] = 'downloads/index';
+$route['downloads/processDownload'] = 'downloads/processDownloads';
 // ------------------------------------------------------------------------
 
 // GROUPS -----------------------------------------------------------------
