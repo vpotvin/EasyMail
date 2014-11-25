@@ -36,7 +36,7 @@ class Send_email extends CI_Controller {
             $data['flashMessages'] = null;
         }
 
-        $this->load->view('_header', $data);
+        //$this->load->view('_header', $data);
         $this->load->view('compose');
         //$this->load->view("_footer", $data);
     }

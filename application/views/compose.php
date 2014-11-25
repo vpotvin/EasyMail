@@ -17,14 +17,17 @@
                 <!-- <form id="form1" method="POST">  -->  
                     <?php   
                         // Create Editor instance and use Text property to load content into the RTE.  
-                        $rte=new RichTextEditor();   
+                        $rte=new RichTextEditor();
+                        include "application/views/_header.php";  
                         $rte->Text="Type here"; 
                         // Set a unique ID to Editor   
                         $rte->ID="Editor1";    
                         $rte->MvcInit();   
                         // Render Editor 
                         echo $rte->GetString();  
-                    ?>   
+                        include "application/views/_footer.php";
+                    ?> 
+
                 <!-- </form>  -->
 
 <!--                 <div class="col-lg-1 col-lg-offset-7">
