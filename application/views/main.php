@@ -17,7 +17,7 @@
 			<input type='submit' class='btn btn-info main_side_link' value='Saved Drafts'>
 		</form>
 
-		<form action='#' method='get'>
+            <form action='application/views/systemSettings.php' method='get'>
 			<input type='submit' class='btn btn-info main_side_link' value='System Settings'>
 		</form>
 
