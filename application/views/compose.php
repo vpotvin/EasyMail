@@ -18,7 +18,19 @@
                     <?php   
                         // Create Editor instance and use Text property to load content into the RTE.  
                         $rte=new RichTextEditor();
-                        include "application/views/_header.php";  
+                        include "application/views/_header.php";
+                    ?>
+                        <form action="send" method="POST" role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="to">To:</label>
+                                <input type="text" name="to" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <input type="text" name="subject" class="form-control">
+                            </div>
+                    <?php  
                         $rte->Text="Type here"; 
                         // Set a unique ID to Editor   
                         $rte->ID="Editor1";    
@@ -26,7 +38,10 @@
                         // Render Editor 
                         echo $rte->GetString();  
                         include "application/views/_footer.php";
-                    ?> 
+                    ?>
+                        <div class="form-group">
+                        <input type="submit" value="Send To All" class="btn btn-success btn-lg">
+                    </div> 
 
                 <!-- </form>  -->
 
