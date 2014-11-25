@@ -7,6 +7,8 @@
  */
 
 class Send_email extends CI_Controller {
+
+
     public function __construct()
     {
         parent::__construct();
@@ -44,16 +46,22 @@ class Send_email extends CI_Controller {
         //depending on that box.
         //This function needs to take information from the form and feed it to the different sending functions depending
         //on the situation.
-        batch_email_to_all('', '');
+
+        $subject = $this->input->post("subject");
+        $message = $this->input->post("message");
+        $addtl_to = $this->input->post("to");
+        $this->batch_email_to_all($subject, $message, $addtl_to);
+
+        return TRUE;
     }
 
     //This should send email in bulk.
-    function batch_email_to_all($subject, $message)
+    function batch_email_to_all($subject, $message, $addtl_to)
     {
         $this->email->clear(TRUE);
         $this->email->from('seprojectfall2014@gmail.com', 'seproject');
         $this->email->to('seprojectfall2014@gmail.com');
-        $this->email->bcc($this->Contacts_model->get_all());
+        $this->email->bcc($this->contacts_model->get_all_addr(), $addtl_to);
         $this->email->subject($subject);
         $this->email->message($message);
 

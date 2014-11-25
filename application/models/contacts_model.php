@@ -11,9 +11,17 @@ class Contacts_model extends CI_Model {
 
     }
     
-    function get_all()
+    function get_all_rows()
     {
-        $query = $this->db->get('Emails');
+        $query = $this->db->get('email_addr');
+        return $query->result_array();
+    }
+
+    function get_all_addr(){
+        $this -> db -> select('email_address');
+        $this -> db -> from('email_addr');
+        $query = $this -> db -> get();
+        print_r($query->result_array());
         return $query->result_array();
     }
 }
