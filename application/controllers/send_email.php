@@ -19,6 +19,8 @@ class Send_email extends CI_Controller {
     }
 
     public function displayform() {
+
+
         if(!$this->session->userdata('logged_in')) {
             $data['logged_in'] = false;
         } else {
@@ -35,7 +37,7 @@ class Send_email extends CI_Controller {
         }
 
         $this->load->view('_header', $data);
-        $this->load->view('compose', $data);
+        $this->load->view('compose');
         //$this->load->view("_footer", $data);
     }
 

@@ -57,6 +57,7 @@ if (defined('ENVIRONMENT'))
  *
  */
 	$system_path = 'system';
+	date_default_timezone_set('America/New_York');
 
 /*
  *---------------------------------------------------------------

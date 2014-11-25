@@ -1,4 +1,6 @@
-<?php require_once "application/richtexteditor/include_rte.php" ?> 
+<?php 
+    require_once "application/richtexteditor/include_rte.php" 
+?> 
 <!-- <div class="col-lg-11"> 
     <form action="send" method="POST" role="form" class="form-horizontal">
  
