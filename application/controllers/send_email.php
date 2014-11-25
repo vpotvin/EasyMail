@@ -35,8 +35,8 @@ class Send_email extends CI_Controller {
         }
 
         $this->load->view('_header', $data);
-        $this->load->view('compose', $data);
-        $this->load->view("_footer", $data);
+        //$this->load->view('compose', $data);
+        //$this->load->view("_footer", $data);
     }
 
     function send()
