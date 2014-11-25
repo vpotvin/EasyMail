@@ -21,8 +21,13 @@ class Contacts_model extends CI_Model {
         $this -> db -> select('email_address');
         $this -> db -> from('email_addr');
         $query = $this -> db -> get();
-        print_r($query->result_array());
-        return $query->result_array();
+
+        $array = array();
+        foreach($query->result() as $row) {
+            $array[] = $row->email_address;
+        }
+        print_r($array);
+        return $array;
     }
 }
 
