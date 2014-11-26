@@ -6,7 +6,7 @@
  * Time: 2:53 PM
  */
 
-class Send_email extends CI_Controller {
+class Email extends CI_Controller {
 
 
     public function __construct()
@@ -67,7 +67,11 @@ class Send_email extends CI_Controller {
         $this->email->subject($subject);
         $this->email->message($message);
 
-        $this->email->send();
+        if ($this->email->send()) {
+            echo "All OK";
+        } else {
+            echo $this->email->print_debugger();
+        }
 
         return TRUE;
 
