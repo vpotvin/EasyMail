@@ -1,5 +1,6 @@
     <?php
-
+    $config['bcc_batch_mode'] = true;
+    $config['bcc_batch_size'] = 5;
     $config['protocol'] = 'smtp';
     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
     $config['smtp_port'] = '465';

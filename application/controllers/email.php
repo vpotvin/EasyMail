@@ -50,7 +50,7 @@ class Email extends CI_Controller {
         //on the situation.
 
         $subject = $this->input->post("subject");
-        $message = $this->input->post("message");
+        $message = $this->input->post("Editor1");
         $addtl_to = $this->input->post("to");
         $this->batch_email_to_all($subject, $message, $addtl_to);
 
@@ -60,18 +60,19 @@ class Email extends CI_Controller {
     //This should send email in bulk.
     function batch_email_to_all($subject, $message, $addtl_to)
     {
+        $send_array = $this->contacts_model->get_all_addr();
+        $send_array[]= $addtl_to;
+
         $this->email->clear(TRUE);
         $this->email->from('seprojectfall2014@gmail.com', 'seproject');
         $this->email->to('seprojectfall2014@gmail.com');
-        $this->email->bcc($this->contacts_model->get_all_addr(), $addtl_to);
+        $this->email->bcc($send_array);
         $this->email->subject($subject);
         $this->email->message($message);
 
-        if ($this->email->send()) {
-            echo "All OK";
-        } else {
-            echo $this->email->print_debugger();
-        }
+        $this->load->helper('url');
+        redirect('main');
+
 
         return TRUE;
 

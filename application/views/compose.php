@@ -31,7 +31,7 @@
                                 <input type="text" name="subject" class="form-control">
                             </div>
                     <?php  
-                        $rte->Text="Type here"; 
+                        $rte->Text="";
                         // Set a unique ID to Editor   
                         $rte->ID="Editor1";    
                         $rte->MvcInit();   

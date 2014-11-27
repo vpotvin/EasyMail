@@ -26,7 +26,7 @@ class Contacts_model extends CI_Model {
         foreach($query->result() as $row) {
             $array[] = $row->email_address;
         }
-        print_r($array);
+//        print_r($array);
         return $array;
     }
 }
