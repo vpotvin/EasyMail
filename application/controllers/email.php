@@ -70,6 +70,9 @@ class Email extends CI_Controller {
         $this->email->subject($subject);
         $this->email->message($message);
 
+        if(!$this->email->send()) {
+            $this->email->print_debugger();
+        }
         $this->load->helper('url');
         redirect('main');
 
