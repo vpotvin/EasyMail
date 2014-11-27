@@ -70,6 +70,8 @@ $route['group/display/(:num)'] = 'group/display/$1';
 $route['/search/index/(:any)'] = 'search/index/$1';
 // ------------------------------------------------------------------------
 
+$route['email/send'] = 'email/send';
+
 
 // Codeigniter Defaults ---------------------------------------------------
 $route[''] = 'main/index';

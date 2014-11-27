@@ -1,4 +1,4 @@
-    <?php
+<?php
     $config['bcc_batch_mode'] = true;
     $config['bcc_batch_size'] = 5;
     $config['mailtype'] = 'html';
@@ -9,3 +9,4 @@
     $config['smtp_pass'] = 'seproject2014';
     $config['charset'] = 'utf-8';
     $config['newline'] = "\r\n";
+?>
