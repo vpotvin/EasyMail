@@ -17,13 +17,12 @@
 			<input type='submit' class='btn btn-info main_side_link' value='Saved Drafts'>
 		</form>
 
-            <form action='application/views/systemSettings.php' method='get'>
+        <form action='/config' method='get'>
 			<input type='submit' class='btn btn-info main_side_link' value='System Settings'>
 		</form>
 
 		<form action='/group/create' method='get'>
 			<input type='submit' class='btn btn-info main_side_link' value='Create Group'>
-		</form>
 	</div>
 
 	<div class='col-lg-2 main_box'>

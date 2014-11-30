@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS email_addr_groups;
 DROP TABLE IF EXISTS user_groups;
 DROP TABLE IF EXISTS email_addr;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS config;
 
 
 
@@ -63,6 +64,16 @@ CREATE TABLE IF NOT EXISTS drafts(
 	message TEXT
 );
 
+CREATE TABLE IF NOT EXISTS config(
+	cid int AUTO_INCREMENT PRIMARY KEY,
+	uid int,
+	smpt_addr varchar(100),
+	email_username varchar(100),
+	email_password varchar(100),
+	FOREIGN KEY (uid)
+		REFERENCES users(uid)
+);
+
 
 INSERT INTO users (username, password) VALUES('setest', 'c1333a0f215ff8f8dd7bbdc636ab4762');
 INSERT INTO users (username, password) VALUES('setest2', '7e54e03f709208b6fd164a3cf3f09202');
@@ -89,6 +100,8 @@ INSERT INTO email_addr_groups(eaid, gid) VALUES(3, 1);
 INSERT INTO email_addr_groups(eaid, gid) VALUES(4, 2);
 INSERT INTO email_addr_groups(eaid, gid) VALUES(5, 2);
 INSERT INTO email_addr_groups(eaid, gid) VALUES(6, 2);
+
+INSERT INTO config(uid, smpt_addr, email_username, email_password) VALUES(1, 'ssl://smtp.gmail.com', 'seeasymail@gmail.com', 'seproject')
 
 -- SELECT email_addr.email_address 
 -- FROM email_addr JOIN email_addr_groups 

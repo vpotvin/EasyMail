@@ -70,8 +70,15 @@ $route['group/display/(:num)'] = 'group/display/$1';
 $route['/search/index/(:any)'] = 'search/index/$1';
 // ------------------------------------------------------------------------
 
+// SENDING STUFF ----------------------------------------------------------
 $route['email/send'] = 'email/send';
+// ------------------------------------------------------------------------
 
+// CONFIG STUFF -----------------------------------------------------------
+$route['config'] = 'config/index';
+$route['config/editConfig'] = 'config/editConfig';
+$route["config/editConfigProc"] = 'config/editConfigProc';
+// ------------------------------------------------------------------------
 
 // Codeigniter Defaults ---------------------------------------------------
 $route[''] = 'main/index';
