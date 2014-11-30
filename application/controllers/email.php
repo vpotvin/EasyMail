@@ -56,8 +56,8 @@ class Email extends CI_Controller {
         } else if($this->input->post("sendType") == 'toIndividual'){
             $subject = $this->input->post("subject");
             $message = $this->input->post("Editor1");
-            $addtl_to = $this->input->post("to");
-            $this->send_individual();
+            $send_to = $this->input->post("to");
+            $this->send_individual($subject, $message, $send_to);
         }
     }
 
@@ -83,23 +83,27 @@ class Email extends CI_Controller {
 
         return TRUE;
     }
-    public function send_individual(){
+    public function send_individual($subject, $message, $send_to){
+        // get this out of database
         $config = Array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'seprojectfall2014@gmail.com',
+            'smtp_user' => 'seeasymail@gmail.com',
             'smtp_pass' => 'seproject',
             'mailtype'  => 'html', 
-            'charset'   => 'iso-8859-1'
+            'charset'   => 'iso-8859-1',
+            'crlf'      => "\r\n",
+            'newline'   => "\r\n"
         );
+
+
         $this->load->library('email', $config);
-        $this->email->to('barnettlynn@gmail.com');
-        $this->email->from("seprojectfall2014@gmail.com");
-        $this->email->subject("TEST");
-        $this->email->message("BODY TEST");
-        $result = $this->email->send();
-        print_r($result);
-        echo "TEST";
+        $this->email->to($send_to);
+        $this->email->from("seeasymail@gmail.com");
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->send();
+        echo $this->email->print_debugger();
     }
 }
