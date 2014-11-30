@@ -70,6 +70,12 @@ class Upload extends CI_Controller {
 			}
 		}
 		fclose($EmailFile);
+		
+		if( isset($_POST['dupes']) ){
+			if($_POST['dupes'] == 'Y'){ 
+				header("location: /listmng/removeDupes");
+			}
+		}
 
 		if (count($badAddr) > 1) {
 

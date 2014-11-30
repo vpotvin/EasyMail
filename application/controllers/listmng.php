@@ -31,6 +31,23 @@
 	        $this->load->view("_footer", $data);
 		}
 
+		public function removeDupes(){
+			$addrs = $this->email_model->get_addr_for_user();
+			$dupes = "";
+			foreach ($addrs as $k => $v) {
+				foreach ($addrs as $j => $i) {
+					if($j != $k){
+						if($v['email_address'] == $i['email_address']){
+							$dupes[] = $i['eaid'];
+							unset($addrs[$k]);
+						}
+					}
+				}
+			}
+			$this->email_model->remove_list($dupes);
+			header("location: listmng/index");
+		}
+
 		public function liveSearch(){
 		
 			$results = $this->email_model->search($_POST['searchString']);

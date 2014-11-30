@@ -69,6 +69,12 @@ class email_model extends CI_Model {
         $this->db->where('eaid', $eaid);
         $this->db->delete('email_addr');
     }
+    public function remove_list($remove_list){
+        foreach ($remove_list as $k) {
+            $this->db->where('eaid', $k);
+            $this->db->delete('email_addr');
+        }
+    }
 }
 
 ?>

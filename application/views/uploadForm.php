@@ -4,9 +4,15 @@
 			<label for="emailFile">Email File:</label>
 			<input type="file" name="emailFile" class="form-control">
 		</div>
+      		<div class="checkbox">
+        		<label>
+          			<input type="checkbox" name="dupes" value="Y"> Remove Duplicates?
+        		</label>
+      		</div>
 
 		<div class="form-group">
 			<input type="submit" value="Upload" class="btn btn-success btn-lg btn-block">
 		</div>
+		<br/>
 	</form>
 </div>

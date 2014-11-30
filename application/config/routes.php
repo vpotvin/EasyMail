@@ -45,6 +45,7 @@ $route['listmng/index'] = 'listmng/index';
 $route['liveListSearch'] = 'listmng/liveSearch';
 $route['liveGetAllOrder'] = 'listmng/liveGetAllOrder';
 $route['listmng/remove/(:num)'] = 'listmng/remove/$1';
+$route['listmng/removeDupes'] = 'listmng/removeDupes';
 
 // ------------------------------------------------------------------------
 

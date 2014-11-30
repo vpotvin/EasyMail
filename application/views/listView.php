@@ -48,7 +48,7 @@
 	<form action='/listmng/index' method='get'>
 		<input type='submit' class='btn btn-info main_side_link' value='Download Full'>
 	</form>
-	<form action='/listmng/index' method='get'>
+	<form action='/listmng/removeDupes' method='get'>
 		<input type='submit' class='btn btn-info main_side_link' value='Remove Duplicates'>
 	</form>
 </div>
