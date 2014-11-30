@@ -6,6 +6,11 @@
     include "application/views/_header.php"; // Manually include this make the Header right
 ?>
     <div class='col-lg-6'>
+        <div class="alert alert-success" id="saveDiv" style="display: none;" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+                Draft Saved
+        </div>
         <form action="/email/send" method="POST" role="form" class="form-horizontal">
             <div class="form-group">
                 <label for="sendType">To Individual or To All:</label>
@@ -23,7 +28,7 @@
 
             <div class="form-group">
                 <label for="subject">Subject:</label>
-                <input type="text" name="subject" class="form-control">
+                <input type="text" name="subject" class="form-control" id='subject'>
             </div>
   
                 <?php  
@@ -51,6 +56,39 @@
         } else if(myselect.options[myselect.selectedIndex].value == "toAll"){
             document.getElementById('indiTo').disabled = true;
         };
+    }
+
+    $(document).ready(function() { 
+        saveTimer();
+    });
+
+    function saveTimer(){
+        window.setInterval(function(){
+            var sendToHandle = document.getElementById("selectOption");
+            
+            var subjectHandle = document.getElementById("subject");
+            var messageHandle = document.getElementById("Editor1");
+
+            var sendToData = sendToHandle.options[sendToHandle.selectedIndex].value;
+            var subjectData = subjectHandle.value;
+            var messageData = messageHandle.value;
+            var indiData = null;
+
+            if(sendToData == 'toIndividual'){
+                var indiHandle = document.getElementById("indiTo");
+                indiData = indiHandle.value;
+            }
+
+            $.post('/drafts/ajaxSave', {sendTo: sendToData, subject: subjectData, message: messageData, address: indiData})
+                .done(function(d){
+                    $('#saveDiv').show();
+                    setTimeout(function(){
+                        $('#saveDiv').fadeOut();
+                    }, 3000);
+                    console.log(d);
+                });
+
+        }, 30000);
     }
 </script>
 

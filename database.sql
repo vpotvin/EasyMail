@@ -2,13 +2,13 @@ use SE
 
 
 -- DROP TABLE IF EXISTS contacts;
-
+DROP TABLE IF EXISTS config;
 DROP TABLE IF EXISTS drafts;
 DROP TABLE IF EXISTS email_addr_groups;
 DROP TABLE IF EXISTS user_groups;
 DROP TABLE IF EXISTS email_addr;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS config;
+
 
 
 
@@ -59,11 +59,6 @@ CREATE TABLE IF NOT EXISTS email_addr_groups(
 		REFERENCES user_groups(gid)
 );
 
-CREATE TABLE IF NOT EXISTS drafts(
-	did int AUTO_INCREMENT PRIMARY KEY,
-	message TEXT
-);
-
 CREATE TABLE IF NOT EXISTS config(
 	cid int AUTO_INCREMENT PRIMARY KEY,
 	uid int,
@@ -74,13 +69,24 @@ CREATE TABLE IF NOT EXISTS config(
 		REFERENCES users(uid)
 );
 
+CREATE TABLE IF NOT EXISTS drafts(
+	did int AUTO_INCREMENT PRIMARY KEY,
+	uid int,
+	sendType varchar(50),
+	sendto varchar(50),
+	subject varchar(50),
+	message TEXT,
+	FOREIGN KEY(uid)
+		REFERENCES users(uid)
+);
+
 
 INSERT INTO users (username, password) VALUES('setest', 'c1333a0f215ff8f8dd7bbdc636ab4762');
 INSERT INTO users (username, password) VALUES('setest2', '7e54e03f709208b6fd164a3cf3f09202');
 
-INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'test@test.com', 'FOR TESTING');
-INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'test2@test.com', 'FOR TESTING2');
-INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'test3@test.com', 'FOR TESTING3');
+INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'barnettlynn@gmail.com', 'FOR TESTING');
+INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'vjgqqw@pwrby.com', 'FOR TESTING2');
+
 
 INSERT INTO email_addr(uid, email_address, title) VALUES(2, 'ThisShouldntShowUP@test.com', 'FOR TESTING');
 INSERT INTO email_addr(uid, email_address, title) VALUES(2, 'ThisShouldntShowUP2@test.com', 'FOR TESTING');

@@ -12,10 +12,10 @@ class Email extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('contacts_model');
+        $this->load->model('email_model');
         //$this->load->model('group_model'); FOR SEND TO GROUP IF IMPLEMENTED
         $this->load->library('session');
-        //$this->load->library('email'); COMMENTED OUT FOR TEST LOAD CONFIG ARRAY HERE
+        $this->load->model('config_model');
         $this->load->helper('form');
     }
 
@@ -52,7 +52,7 @@ class Email extends CI_Controller {
         if($this->input->post("sendType") == 'toAll'){
             $subject = $this->input->post("subject");
             $message = $this->input->post("Editor1");
-            echo $this->batch_email_to_all($subject, $message, $addtl_to);
+            echo $this->batch_email_to_all($subject, $message);
         } else if($this->input->post("sendType") == 'toIndividual'){
             $subject = $this->input->post("subject");
             $message = $this->input->post("Editor1");
@@ -62,35 +62,48 @@ class Email extends CI_Controller {
     }
 
     //This should send email in bulk.
-    function batch_email_to_all($subject, $message, $addtl_to)
+    function batch_email_to_all($subject, $message)
     {
-        // $send_array = $this->contacts_model->get_all_addr();
-        // $send_array[]= $addtl_to;
+         $configData = $result = $this->config_model->get_config();
+         $send_array = $this->email_model->get_addr_for_user();
 
-        // $this->email->clear(TRUE);
-        // //$this->email->from('seprojectfall2014@gmail.com', 'seproject');
-        // $this->email->to('seprojectfall2014@gmail.com');
-        // $this->email->bcc($send_array);
-        // $this->email->subject($subject);
-        // $this->email->message($message);
-
-        // if(!$this->email->send()) {
-        //     $this->email->print_debugger();
-        // }
-        // $this->load->helper('url');
-        // redirect('main');
-
-
-        return TRUE;
-    }
-    public function send_individual($subject, $message, $send_to){
-        // get this out of database
         $config = Array(
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_host' => $configData[0]['smpt_addr'],
             'smtp_port' => 465,
-            'smtp_user' => 'seeasymail@gmail.com',
-            'smtp_pass' => 'seproject',
+            'smtp_user' => $configData[0]['email_username'],
+            'smtp_pass' => $configData[0]['email_password'],
+            'mailtype'  => 'html', 
+            'charset'   => 'iso-8859-1',
+            'crlf'      => "\r\n",
+            'newline'   => "\r\n"
+        );
+
+        $this->load->library('email', $config);
+
+
+
+
+         foreach ($send_array as $k) {
+            $this->email->to($k);
+            $this->email->from($configData[0]['email_username']);
+            $this->email->subject($subject);
+            $this->email->message($message);
+
+            // Test for Failure and add to array to print out
+            // NOTIFY SUCCESS
+
+            $this->email->send();
+         };
+    }
+    public function send_individual($subject, $message, $send_to){
+        $configData = $result = $this->config_model->get_config();
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => $configData[0]['smpt_addr'],
+            'smtp_port' => 465,
+            'smtp_user' => $configData[0]['email_username'],
+            'smtp_pass' => $configData[0]['email_password'],
             'mailtype'  => 'html', 
             'charset'   => 'iso-8859-1',
             'crlf'      => "\r\n",
@@ -100,10 +113,11 @@ class Email extends CI_Controller {
 
         $this->load->library('email', $config);
         $this->email->to($send_to);
-        $this->email->from("seeasymail@gmail.com");
+        $this->email->from($configData[0]['email_username']);
         $this->email->subject($subject);
         $this->email->message($message);
         $this->email->send();
-        echo $this->email->print_debugger();
+        //NOTIFIY OF SUCCESS
+        header("location: /");
     }
 }

@@ -80,6 +80,10 @@ $route['config/editConfig'] = 'config/editConfig';
 $route["config/editConfigProc"] = 'config/editConfigProc';
 // ------------------------------------------------------------------------
 
+// AUTOSAVE STUFF ---------------------------------------------------------
+$route['drafts/ajaxSave'] = 'drafts/ajaxSave';
+//-------------------------------------------------------------------------
+
 // Codeigniter Defaults ---------------------------------------------------
 $route[''] = 'main/index';
 $route['/'] = 'main/index';
