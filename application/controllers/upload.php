@@ -52,6 +52,7 @@ class Upload extends CI_Controller {
 		// --------------------------------------------------------------------
 		$EmailFile = fopen($_FILES['emailFile']['tmp_name'], "r") or die("Unable to open file!");
 		$badAddr = "";
+		$dupes = "";
 		while(!feof($EmailFile)) {
 			$addr = fgets($EmailFile);
 			$addr = trim($addr);
@@ -59,8 +60,7 @@ class Upload extends CI_Controller {
 			if($addr != ""){
 				if (filter_var($addr, FILTER_VALIDATE_EMAIL)) {
 					if(!$this->email_model->insert_email($addr, null)){
-						 // this is almost alway a duplicate error but shoudl be confirmed
-						 ///print_r($this->db->_error_message()); 
+						 $dupes[] = $addr;
 					}
 				} else{
 					$badAddr[] = $addr;
@@ -94,7 +94,7 @@ class Upload extends CI_Controller {
 
 			$this->session->set_flashdata('flashMessages', $fMessages);
 
-			redirect("/", 'refresh');
+			header("location: /listmng/index");
 		}
 	}
 
@@ -119,7 +119,7 @@ class Upload extends CI_Controller {
 
 		$this->session->set_flashdata('flashMessages', $fMessages);
 
-		redirect("/", 'refresh');
+		redirect("/listmng/index", 'refresh');
 	}
 
 	public function ajaxInsert(){

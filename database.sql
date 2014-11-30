@@ -36,8 +36,7 @@ CREATE TABLE IF NOT EXISTS email_addr(
 	title varchar(100),
 	FOREIGN KEY (uid) 
         REFERENCES users(uid)
-        ON DELETE CASCADE,
-    UNIQUE KEY (`email_address`,`uid`)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS user_groups(

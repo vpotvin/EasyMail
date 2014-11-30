@@ -38,10 +38,14 @@
 |
 */
 
-$route["info/info"] = 'info/info';
 
-// For Testing ------------------------------------------------------------
-$route['contacts/listcontacts'] = 'contacts/listcontacts';
+
+// List Managment ---------------------------------------------------------
+$route['listmng/index'] = 'listmng/index';
+$route['liveListSearch'] = 'listmng/liveSearch';
+$route['liveGetAllOrder'] = 'listmng/liveGetAllOrder';
+$route['listmng/remove/(:num)'] = 'listmng/remove/$1';
+
 // ------------------------------------------------------------------------
 
 // Login ------------------------------------------------------------------

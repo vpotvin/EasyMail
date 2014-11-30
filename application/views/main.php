@@ -23,6 +23,10 @@
 
 		<form action='/group/create' method='get'>
 			<input type='submit' class='btn btn-info main_side_link' value='Create Group'>
+		</form>
+		<form action='/listmng/index' method='get'>
+			<input type='submit' class='btn btn-info main_side_link' value='Manage Contacts'>
+		</form>
 	</div>
 
 	<div class='col-lg-2 main_box'>
