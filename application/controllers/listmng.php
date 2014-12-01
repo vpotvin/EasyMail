@@ -77,6 +77,30 @@
 			}
 		}
 
+		public function downloadCurrent(){
+			$randomize_file_name = rand();
+         	$fileName = "tempfile" . $randomize_file_name . ".txt";
+         	$myfile = fopen($fileName, "w");
+         	$username = $this->session->userdata("logged_in")['username'];
+         	ob_start('ob_gzhandler');
+		 	header('Content-type: application/octet-stream');
+			header('Content-Disposition: attachment; filename="'. $username . '_contacts.txt"');
+
+
+
+			$addrs = json_decode($_POST['data']);
+
+			foreach ($addrs as $k => $v ) {
+				fwrite($myfile, $v . "\n");
+		 		echo $v . "\n";
+			}
+
+			fclose($myfile);
+
+
+		
+		}
+
 		public function remove($eaid){
 			$this->email_model->remove($eaid);
 			header("location: /listmng/index");

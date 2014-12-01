@@ -46,6 +46,7 @@ $route['liveListSearch'] = 'listmng/liveSearch';
 $route['liveGetAllOrder'] = 'listmng/liveGetAllOrder';
 $route['listmng/remove/(:num)'] = 'listmng/remove/$1';
 $route['listmng/removeDupes'] = 'listmng/removeDupes';
+$route['listmng/downloadCurrent'] = 'listmng/downloadCurrent';
 
 // ------------------------------------------------------------------------
 
@@ -62,7 +63,7 @@ $route['ajaxInsert'] = 'upload/ajaxInsert';
 // ------------------------------------------------------------------------
 
 // File Download ----------------------------------------------------------
-$route['downloads/full'] = 'downloads/index';
+$route['downloads/full'] = 'downloads/full';
 $route['downloads/processDownload'] = 'downloads/processDownloads';
 // ------------------------------------------------------------------------
 

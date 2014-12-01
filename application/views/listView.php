@@ -7,7 +7,7 @@
   		</span>
  	 	<input type="text" class="form-control" onkeyup="showResult(this.value)">
 	</div><!-- /input-group -->
-	<table class="table">
+	<table class="table" id="etable">
 		<thead>
 			<tr>
 				<th>Address</th>
@@ -42,10 +42,10 @@
 	<form action='/uploadfile?' method='get'>
 		<input type='submit' class='btn btn-info main_side_link' value='Upload/Merge List'>
 	</form>
-	<form action='/listmng/index' method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Download Current'>
+	<form method='get'>
+		<input type='submit' class='btn btn-info main_side_link' value='Download Current' onclick="return getCurrentList()">
 	</form>
-	<form action='/listmng/index' method='get'>
+	<form action='/downloads/full' method='get'>
 		<input type='submit' class='btn btn-info main_side_link' value='Download Full'>
 	</form>
 	<form action='/listmng/removeDupes' method='get'>
@@ -71,6 +71,30 @@
 			}
 		});
 		return false;
+	}
+
+	function getCurrentList(){
+		var obj = {}
+		etable = document.getElementById("etable")
+		for (var i = 1, row; row = etable.rows[i]; i++) {
+			obj[i] = row.cells[0].innerHTML;
+		}
+		strObj = JSON.stringify(obj);
+		// $.get( "/listmng/downloadCurrent", {data: strObj},function(returnData){
+		// 	if(returnData){
+		// 		//console.log(returnData);
+		// 		//$("#displayBody").append(returnData);
+		// 	}
+		// });
+
+		var url = "/listmng/downloadCurrent"
+		var form = $("<form action='" + url + "' method='post'>" +
+  			"<input type='text' name='data' value='" + strObj + "'/>" +
+  			"</form>");
+		$('body').append(form);
+		form.submit();
+		
+		return false
 	}
 
 </script>
