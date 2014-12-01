@@ -26,7 +26,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users(
 	uid INT AUTO_INCREMENT PRIMARY KEY,
 	username varchar(50),
-	password varchar(100)
+	password varchar(100),
+	admin varchar(1)
 );
 
 CREATE TABLE IF NOT EXISTS email_addr(
@@ -80,8 +81,9 @@ CREATE TABLE IF NOT EXISTS drafts(
 );
 
 
-INSERT INTO users (username, password) VALUES('setest', 'c1333a0f215ff8f8dd7bbdc636ab4762');
-INSERT INTO users (username, password) VALUES('setest2', '7e54e03f709208b6fd164a3cf3f09202');
+INSERT INTO users (username, password, admin) VALUES('setest', 'c1333a0f215ff8f8dd7bbdc636ab4762', 'N');
+INSERT INTO users (username, password, admin) VALUES('setest2', '7e54e03f709208b6fd164a3cf3f09202', 'N');
+INSERT INTO users (username, password, admin) VALUES('seadmin', '9d9c79e0aa5e620c10ef24f67563af46', 'Y');
 
 INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'barnettlynn@gmail.com', 'FOR TESTING');
 INSERT INTO email_addr(uid, email_address, title) VALUES(1, 'vjgqqw@pwrby.com', 'FOR TESTING2');

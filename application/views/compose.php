@@ -129,9 +129,13 @@
             <form action='/listmng/index' method='get'>
                 <input type='submit' class='btn btn-info main_side_link' value='Manage Contacts'>
             </form>
-            <form method='get'>
-                <input type='submit' class='btn btn-info main_side_link' value='Manage Groups'>
-            </form>
+            <?php
+                if($admin){
+                    echo "<form action='/user/createUser'method='get'>";
+                    echo    "<input type='submit' class='btn btn-info main_side_link' value='Create User'>";
+                    echo "</form>";
+                }
+            ?>
         </div>
 
 

@@ -56,6 +56,11 @@ $route['processLogin'] = 'login/processLogin';
 $route['logout'] = 'login/logout';
 // ------------------------------------------------------------------------
 
+// Users-------------------------------------------------------------------
+$route['user/CreateUser'] = 'user/CreateUser';
+$route['user/CreateUserProc'] = 'user/CreateUserProc';
+//-------------------------------------------------------------------------
+
 // File Upload ------------------------------------------------------------
 $route['uploadfile'] = 'upload/index';
 $route['procConfirm'] = 'upload/procConfirm';

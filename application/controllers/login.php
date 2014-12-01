@@ -34,10 +34,10 @@ class Login extends CI_Controller {
 		$password = $this->input->post("password");
 		$login_result = $this->user_model->login($username, $password);
 		if($login_result){
-
 			$sess_array = array(
          		'uid' => $login_result[0]->uid,
-         		'username' => $login_result[0]->username
+         		'username' => $login_result[0]->username,
+         		'admin' => $login_result[0]->admin
        		);
 
        		$this->session->set_userdata('logged_in', $sess_array);

@@ -27,6 +27,11 @@ class Email extends CI_Controller {
             redirect('/login/displayform/', 'location');
         } else{
             $data["logged_in"] = true;
+            if($this->session->userdata('logged_in')['admin'] == 'Y'){
+                $data['admin'] = true;
+            } else{
+                $data['admin'] = false;
+            }
         }
 
 

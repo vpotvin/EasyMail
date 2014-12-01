@@ -7,7 +7,7 @@ Class user_model extends CI_Model {
     }
  function login($username, $password) {
    // Switch to Bycrypt to be realistic. 
-   $this -> db -> select('uid, username, password');
+   $this -> db -> select('uid, username, password, admin');
    $this -> db -> from('users');
    $this -> db -> where('username', $username);
    $this -> db -> where('password', MD5($password));
@@ -23,5 +23,16 @@ Class user_model extends CI_Model {
      return false;
    }
  }
+
+  function create_user($username, $password, $admin){
+    $data = array(
+            'username' => $username,
+            'password' => md5($password),
+            'admin' => $admin
+            );
+    $this->db->insert('users', $data);
+ }
+
+
 }
 ?>
