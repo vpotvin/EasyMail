@@ -21,8 +21,6 @@ class Email extends CI_Controller {
     }
 
     public function displayform() {
-        echo phpinfo();
-        die();
 
         if(!$this->session->userdata('logged_in')) {
             $data['logged_in'] = false;
