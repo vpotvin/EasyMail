@@ -34,22 +34,22 @@
 <div class="col-lg-2 col-lg-offset-1">
 	<h3>List Managment</h3>
 	<form method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Sort Acending' onclick="return getByOrder('asc');">
+		<input type='submit' class='btn btn-primary main_side_link' value='Sort Acending' onclick="return getByOrder('asc');">
 	</form>
 	<form method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Sort Decending' onclick="return getByOrder('desc');">
+		<input type='submit' class='btn btn-primary main_side_link' value='Sort Decending' onclick="return getByOrder('desc');">
 	</form>
 	<form action='/uploadfile?' method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Upload/Merge List'>
+		<input type='submit' class='btn btn-primary main_side_link' value='Upload/Merge List'>
 	</form>
 	<form method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Download Current' onclick="return getCurrentList()">
+		<input type='submit' class='btn btn-primary main_side_link' value='Download Current' onclick="return getCurrentList()">
 	</form>
 	<form action='/downloads/full' method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Download Full'>
+		<input type='submit' class='btn btn-primary main_side_link' value='Download Full'>
 	</form>
 	<form action='/listmng/removeDupes' method='get'>
-		<input type='submit' class='btn btn-info main_side_link' value='Remove Duplicates'>
+		<input type='submit' class='btn btn-primary main_side_link' value='Remove Duplicates'>
 	</form>
 </div>
 

@@ -87,23 +87,35 @@
                     <label for="sendType">To Individual or To All:</label>
                     <select name="sendType" id="selectOption" class="form-control" onchange="sendSelect()">
                         <option value="" disabled selected required>Send Type</option>
-                        <option value="toAll">Send To All</option>
-                        <option value="toIndividual">Send To Individual</option>
+                        <option value="toAll" <?php if($draft['sendType'] == 'toAll'){echo "selected";}?> >Send To All</option>
+                        <option value="toIndividual" <?php if($draft['sendType'] == 'toIndividual'){echo "selected";}?> >Send To Individual</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="to">To Individual:</label>
-                    <input type="text" name="to" id="indiTo" class="form-control" disabled>
+                    <input type="text" name="to" id="indiTo" class="form-control" 
+                        <?php
+                            if($draft['sendType'] == 'toAll'){
+                                echo 'disabled';
+                            } else{
+                                echo "value='" . $draft['sendTo'] . "'";
+                            }
+                        ?>
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Subject:</label>
-                    <input type="text" name="subject" class="form-control" id='subject'>
+                    <input type="text" name="subject" class="form-control" id='subject'
+                        <?php
+                            echo "value='" . $draft['subject'] . "'";
+                        ?>
+                    >
                 </div>
   
-                <?php  
-                    $rte->Text="";
+                <?php 
+                    $rte->Text = $draft['message'];
                     // Set a unique ID to Editor   
                     $rte->ID="Editor1";    
                     $rte->MvcInit();
@@ -123,10 +135,10 @@
             <form action='drafts/display' method='get'>
                 <input type='submit' class='btn btn-info main_side_link' value='Saved Drafts'>
             </form>
-            <form action='/config' method='get'>
+            <form method='get'>
                 <input type='submit' class='btn btn-info main_side_link' value='System Settings'>
             </form>
-            <form action='/listmng/index' method='get'>
+            <form action='/uploadfile?' method='get'>
                 <input type='submit' class='btn btn-info main_side_link' value='Manage Contacts'>
             </form>
             <form method='get'>
@@ -191,4 +203,3 @@
         margin-top: 5px;
     }
 </style>
-

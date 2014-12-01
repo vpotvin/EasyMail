@@ -13,6 +13,7 @@ class Email extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('email_model');
+        $this->load->model('drafts_model');
         //$this->load->model('group_model'); FOR SEND TO GROUP IF IMPLEMENTED
         $this->load->library('session');
         $this->load->model('config_model');
@@ -38,8 +39,31 @@ class Email extends CI_Controller {
             $data['flashMessages'] = null;
         }
 
-        $this->load->view('compose');
-        $this->load->view("_footer", $data);
+        $this->load->view('compose', $data);
+        
+    }
+
+    public function displayDraft($did){
+
+        if(!$this->session->userdata('logged_in')) {
+            $data['logged_in'] = false;
+        } else {
+            $data['logged_in'] = true;
+        }
+
+
+        $data['flashMessages'] = [];
+        if($messages = $this->session->flashdata('flashMessages')){
+            foreach ($messages as $message) {
+                array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
+            }
+        }else {
+            $data['flashMessages'] = null;
+        }
+
+        $data['draft'] = $this->drafts_model->get_by_id($did)[0];
+
+        $this->load->view('displayDraft', $data);
     }
 
     public function send()

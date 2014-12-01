@@ -25,4 +25,31 @@ class Drafts extends CI_Controller {
 
 
     }
+
+    public function display(){
+        if(!$this->session->userdata('logged_in')) {
+            redirect('/login/displayform/', 'refresh');
+        } else{
+            $data["logged_in"] = true;
+        }
+        // --------------------------------------------------------------------
+
+        // SET FLASH MESSAGES -------------------------------------------------
+        // THIS SHOULD PROBABLY BE MOVED TO A HELP CLASS
+        $data['flashMessages'] = [];
+        if($messages = $this->session->flashdata('flashMessages')){
+            foreach ($messages as $message) {
+                array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
+            }
+        }else {
+            $data['flashMessages'] = null;
+        }
+        // --------------------------------------------------------------------
+
+
+        $data['drafts'] = $this->drafts_model->get_drafts();
+        $this->load->view('_header', $data);
+        $this->load->view('displayDrafts', $data);
+        $this->load->view('_footer');
+    }
 }

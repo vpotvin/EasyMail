@@ -78,6 +78,7 @@ $route['/search/index/(:any)'] = 'search/index/$1';
 
 // SENDING STUFF ----------------------------------------------------------
 $route['email/send'] = 'email/send';
+$route['email/displayDraft/(:num)'] = 'email/displayDraft/$1';
 // ------------------------------------------------------------------------
 
 // CONFIG STUFF -----------------------------------------------------------
@@ -88,12 +89,13 @@ $route["config/editConfigProc"] = 'config/editConfigProc';
 
 // AUTOSAVE STUFF ---------------------------------------------------------
 $route['drafts/ajaxSave'] = 'drafts/ajaxSave';
+$route['drafts/display'] = 'drafts/display';
 //-------------------------------------------------------------------------
 
 // Codeigniter Defaults ---------------------------------------------------
-$route[''] = 'main/index';
-$route['/'] = 'main/index';
-$route['default_controller'] = "main/index";
+$route[''] = 'email/displayform';
+$route['/'] = 'email/displayform';
+$route['default_controller'] = "email/displayform";
 
 
 

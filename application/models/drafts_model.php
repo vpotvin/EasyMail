@@ -26,6 +26,33 @@ class Drafts_model extends CI_Model {
 
         $this->db->insert('drafts', $data);
     }
+
+    public function get_drafts(){
+        $uid = $this->session->userdata('logged_in')['uid'];
+        $this->db->select('did');
+        $this->db->select('sendType');
+        $this->db->select('sendTo');
+        $this->db->select('subject');
+        $this->db->select('message');
+        $this->db->from('drafts');
+        $this->db->where('uid', $uid);
+        $query = $this -> db -> get();
+        return $query->result_array();
+    }
+
+    public function get_by_id($did){
+        $uid = $this->session->userdata('logged_in')['uid'];
+        $this->db->select('did');
+        $this->db->select('sendType');
+        $this->db->select('sendTo');
+        $this->db->select('subject');
+        $this->db->select('message');
+        $this->db->from('drafts');
+        $this->db->where('uid', $uid);
+        $this->db->where('did', $did);
+        $query = $this -> db -> get();
+        return $query->result_array();
+    }
 }
 
 
