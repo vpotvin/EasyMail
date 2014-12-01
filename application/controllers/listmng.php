@@ -82,7 +82,7 @@
          	$fileName = "tempfile" . $randomize_file_name . ".txt";
          	$myfile = fopen($fileName, "w");
          	$username = $this->session->userdata("logged_in")['username'];
-         	ob_start('ob_gzhandler');
+         	//ob_start('ob_gzhandler');
 		 	header('Content-type: application/octet-stream');
 			header('Content-Disposition: attachment; filename="'. $username . '_contacts.txt"');
 
