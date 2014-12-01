@@ -96,6 +96,7 @@
 			}
 
 			fclose($myfile);
+			unlink(realpath($fileName));
 
 
 		

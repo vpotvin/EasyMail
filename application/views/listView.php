@@ -92,7 +92,9 @@
   			"<input type='text' name='data' value='" + strObj + "'/>" +
   			"</form>");
 		$('body').append(form);
+
 		form.submit();
+		form.remove();
 		
 		return false
 	}
