@@ -42,11 +42,11 @@ class Downloads extends CI_Controller {
   //       }
 
 	public function full() {
-		// if(!$this->session->userdata('logged_in')) {
-		// 	redirect('/login/displayform/', 'refresh');
-		// } else {
-		// 	$data['logged_in'] = true;
-		// }
+		if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
                 
   //               // SET FLASH MESSAGES -------------------------------------------------
 		// // THIS SHOULD PROBABLY BE MOVED TO A HELP CLASS

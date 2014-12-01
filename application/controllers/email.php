@@ -18,14 +18,15 @@ class Email extends CI_Controller {
         $this->load->library('session');
         $this->load->model('config_model');
         $this->load->helper('form');
+        $this->load->helper('url');
     }
 
     public function displayform() {
 
         if(!$this->session->userdata('logged_in')) {
-            $data['logged_in'] = false;
-        } else {
-            $data['logged_in'] = true;
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
         }
 
 
@@ -45,9 +46,9 @@ class Email extends CI_Controller {
     public function displayDraft($did){
 
         if(!$this->session->userdata('logged_in')) {
-            $data['logged_in'] = false;
-        } else {
-            $data['logged_in'] = true;
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
         }
 
 
@@ -67,6 +68,12 @@ class Email extends CI_Controller {
 
     public function send()
     {
+
+        if(!$this->session->userdata('logged_in')) {
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
+        }
         //I figured there needs to be a check box that that says send to all
         //I though this functon could decide if the intention is to send to the whole list or to a couple addresses
         //depending on that box.
@@ -87,6 +94,12 @@ class Email extends CI_Controller {
     //This should send email in bulk.
     function batch_email_to_all($subject, $message)
     {
+        if(!$this->session->userdata('logged_in')) {
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
+        }
+
          $configData = $result = $this->config_model->get_config();
          $send_array = $this->email_model->get_addr_for_user();
 
@@ -120,6 +133,11 @@ class Email extends CI_Controller {
          };
     }
     public function send_individual($subject, $message, $send_to){
+        if(!$this->session->userdata('logged_in')) {
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
+        }
         $configData = $result = $this->config_model->get_config();
         $config = Array(
             'protocol' => 'smtp',

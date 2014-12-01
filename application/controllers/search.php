@@ -9,6 +9,11 @@ class Search extends CI_Controller {
 	}
 
 	public function index($search_term){
+		if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 				//echo "SEARCH TERM: " . $search_term . "<br />";
 				$results = $this->email_model->search($search_term);
 				foreach ($results as $r) {

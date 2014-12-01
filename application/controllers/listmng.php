@@ -5,14 +5,15 @@
 			parent::__construct();
 			$this->load->library('session');
 			$this->load->model('email_model');
+			$this->load->helper('url');
 		}
 
 		public function index(){
 			if(!$this->session->userdata('logged_in')) {
-	            $data['logged_in'] = false;
-	        } else {
-	            $data['logged_in'] = true;
-	        }
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 
 
 	        $data['flashMessages'] = [];
@@ -32,6 +33,11 @@
 		}
 
 		public function removeDupes(){
+			if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 			$addrs = $this->email_model->get_addr_for_user();
 			$dupes = "";
 			foreach ($addrs as $k => $v) {
@@ -49,7 +55,11 @@
 		}
 
 		public function liveSearch(){
-		
+			if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 			$results = $this->email_model->search($_POST['searchString']);
 			foreach ($results as $r) {
 				echo "<tr>";
@@ -64,6 +74,11 @@
 		}
 
 		public function liveGetAllOrder(){
+			if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 			$results = $this->email_model->get_all_order_by($_POST['orderType']);
 			foreach ($results as $r) {
 				echo "<tr>";
@@ -78,6 +93,11 @@
 		}
 
 		public function downloadCurrent(){
+			if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 			$randomize_file_name = rand();
          	$fileName = "tempfile" . $randomize_file_name . ".txt";
          	$myfile = fopen($fileName, "w");
@@ -103,6 +123,11 @@
 		}
 
 		public function remove($eaid){
+			if(!$this->session->userdata('logged_in')) {
+			redirect('/login/displayform/', 'location');
+		} else{
+			$data["logged_in"] = true;
+		}
 			$this->email_model->remove($eaid);
 			header("location: /listmng/index");
 		}

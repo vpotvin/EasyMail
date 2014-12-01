@@ -13,6 +13,7 @@ class Config extends CI_Controller {
         parent::__construct();
          $this->load->model('config_model');
          $this->load->library('session');
+         $this->load->helper('url');
         //$this->load->model('contacts_model');
         //$this->load->model('group_model'); FOR SEND TO GROUP IF IMPLEMENTED
         //$this->load->library('session');
@@ -22,11 +23,10 @@ class Config extends CI_Controller {
 
     public function index(){
         if(!$this->session->userdata('logged_in')) {
-            $data['logged_in'] = false;
-        } else {
-            $data['logged_in'] = true;
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
         }
-
 
         $data['flashMessages'] = [];
         if($messages = $this->session->flashdata('flashMessages')){
@@ -49,9 +49,9 @@ class Config extends CI_Controller {
 
     public function editConfig(){
         if(!$this->session->userdata('logged_in')) {
-            $data['logged_in'] = false;
-        } else {
-            $data['logged_in'] = true;
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
         }
 
 
@@ -72,6 +72,11 @@ class Config extends CI_Controller {
     }
 
     public function editConfigProc(){
+        if(!$this->session->userdata('logged_in')) {
+            redirect('/login/displayform/', 'location');
+        } else{
+            $data["logged_in"] = true;
+        }
         $server     = $this->input->post('smtpServer');
         $username   = $this->input->post("username");
         $password   = $this->input->post("password");
