@@ -71,7 +71,7 @@ class Downloads extends CI_Controller {
   //               //This function is identical to calling fopen(), fwrite() and fclose() successively to write data to a file.
   //               file_put_contents($fileName, group_model::get_addr_by_id($username), FILE_USE_INCLUDE_PATH);
 //
-		if(!ob_start("ob_gzhandler")) ob_start();
+		//if(!ob_start("ob_gzhandler")) ob_start();
 		header('Content-type: application/octet-stream');
 		header('Content-Disposition: attachment; filename="'. $username . '_contacts.txt"');
 
