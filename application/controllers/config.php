@@ -21,6 +21,8 @@ class Config extends CI_Controller {
         //$this->load->helper('form');
     }
 
+
+    //Determines what to display when the user navigates to the index page
     public function index(){
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'location');
@@ -47,6 +49,7 @@ class Config extends CI_Controller {
         $this->load->view("_footer");
     }
 
+    //Loads the the system settings view
     public function editConfig(){
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'location');
@@ -71,6 +74,7 @@ class Config extends CI_Controller {
 
     }
 
+    //Edits the user's Email Configuration
     public function editConfigProc(){
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'location');

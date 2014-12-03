@@ -1,3 +1,5 @@
+<!--This view is formatted differently from all others to properly accommodate RTF editor -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

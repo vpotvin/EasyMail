@@ -11,7 +11,8 @@ class email_model extends CI_Model {
         $this->load->database();
 
     }
-    
+
+    //adds a new address
     function insert_email($address, $title) {
         $session_data = $this->session->userdata('logged_in');
         $this->uid = $session_data['uid'];
@@ -23,6 +24,7 @@ class email_model extends CI_Model {
         }
     }
 
+    //gets the user's current list of addresses
     public function get_addr_for_user(){
         $session_data = $this->session->userdata('logged_in');
         $this->uid = $session_data['uid'];
@@ -34,6 +36,7 @@ class email_model extends CI_Model {
         return $query->result_array();
     }
 
+    //gets list in ascending or descending order
     public function get_all_order_by($order){
         $session_data = $this->session->userdata('logged_in');
         $this->uid = $session_data['uid'];
@@ -46,6 +49,7 @@ class email_model extends CI_Model {
         return $query->result_array();
     }
 
+    //searches for a specific email address
     public function search($searchTerm){
         $session_data = $this->session->userdata('logged_in');
         $this->uid = $session_data['uid'];

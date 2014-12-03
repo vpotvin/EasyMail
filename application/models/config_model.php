@@ -16,6 +16,7 @@ class Config_model extends CI_Model {
 
     }
 
+    //gets the current user email configuration
     function get_config(){
     	$this->uid = $this->session->userdata('logged_in')['uid'];
     	$this->db->select('smpt_addr');
@@ -27,6 +28,7 @@ class Config_model extends CI_Model {
     	return $query->result_array();
     }
 
+    //sets the user's email configuration
     function set_config($server, $username, $password){
         $uid = $this->session->userdata('logged_in')['uid'];
         $data = array(

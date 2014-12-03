@@ -41,6 +41,7 @@ class Downloads extends CI_Controller {
 		// // --------------------------------------------------------------------
   //       }
 
+    //Create and download text file containing the list of contacts
 	public function full() {
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
@@ -103,7 +104,7 @@ class Downloads extends CI_Controller {
 		//$data = $this->contacts_model->get_all();
 		//echo $data[0]['addr'];
 	}
-        
+        //Displays download view form
         public function processDownload() {
             // MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS

@@ -8,6 +8,7 @@ class Login extends CI_Controller {
 		$this->load->helper('url');
 	}
 
+    //displays login view
 	public function displayform() {
 		if(!$this->session->userdata('logged_in')) {
 			$data['logged_in'] = false;
@@ -29,6 +30,7 @@ class Login extends CI_Controller {
 		$this->load->view("_footer");
 	}
 
+    //Processes the user's login credentials. If correct, they are redirected to home page. If not, they can try again.
 	public function processLogin(){
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
@@ -62,7 +64,7 @@ class Login extends CI_Controller {
 		}
 	}
 
-
+    //Ends the user's current session.
 	public function logout() {
 		$this->session->unset_userdata('logged_in');
 

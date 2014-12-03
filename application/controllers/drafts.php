@@ -15,6 +15,7 @@ class Drafts extends CI_Controller {
         //$this->load->helper('form');
     }
 
+    //automatically saves email drafts
     public function ajaxSave() {
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'location');
@@ -27,6 +28,7 @@ class Drafts extends CI_Controller {
 
     }
 
+    //displays displayDrafts view
     public function display(){
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'refresh');

@@ -8,12 +8,13 @@
 			$this->load->helper('url');
 		}
 
+        //checks that user is logged in and redirects them to login if they are not.
 		public function index(){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
-		} else{
-			$data["logged_in"] = true;
-		}
+            } else{
+                $data["logged_in"] = true;
+            }
 
 
 	        $data['flashMessages'] = [];
@@ -32,12 +33,13 @@
 	        $this->load->view("_footer", $data);
 		}
 
+        //Removes duplicatse from the list
 		public function removeDupes(){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
-		} else{
-			$data["logged_in"] = true;
-		}
+            } else{
+                $data["logged_in"] = true;
+            }
 			$addrs = $this->email_model->get_addr_for_user();
 			$dupes = "";
 			foreach ($addrs as $k => $v) {
@@ -54,12 +56,13 @@
 			header("location: listmng/index");
 		}
 
+        //searches for a specified address
 		public function liveSearch(){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
-		} else{
-			$data["logged_in"] = true;
-		}
+            } else{
+                $data["logged_in"] = true;
+            }
 			$results = $this->email_model->search($_POST['searchString']);
 			foreach ($results as $r) {
 				echo "<tr>";
@@ -73,12 +76,13 @@
 			}
 		}
 
+        //displays all addresses in either ascending or descending order
 		public function liveGetAllOrder(){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
-		} else{
-			$data["logged_in"] = true;
-		}
+            } else{
+                $data["logged_in"] = true;
+            }
 			$results = $this->email_model->get_all_order_by($_POST['orderType']);
 			foreach ($results as $r) {
 				echo "<tr>";
@@ -92,12 +96,13 @@
 			}
 		}
 
+        //allows the user to download the current list
 		public function downloadCurrent(){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
-		} else{
-			$data["logged_in"] = true;
-		}
+            } else{
+                $data["logged_in"] = true;
+            }
 			$randomize_file_name = rand();
          	$fileName = "tempfile" . $randomize_file_name . ".txt";
          	$myfile = fopen($fileName, "w");
@@ -122,12 +127,13 @@
 		
 		}
 
+        //allows the user to remove addresses from the list
 		public function remove($eaid){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
-		} else{
-			$data["logged_in"] = true;
-		}
+            } else{
+                $data["logged_in"] = true;
+            }
 			$this->email_model->remove($eaid);
 			header("location: /listmng/index");
 		}

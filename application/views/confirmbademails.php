@@ -4,7 +4,7 @@
 	    <h3 class="panel-title">Unknown Email Address</h3>
 	  </div>
 	  <div class="panel-body">
-	    These Email Address' Apear to be Invalid, Please Confirm Each Address You Would Still LIke To Add.
+	    These Email Address' Appear to be Invalid, Please Confirm Each Address You Would Still LIke To Add.
 	    Be Aware That if an Invalid Email Address is Added There May be an Error When Attemption to Use it, 
 	    Causing a Group Send to Fail.
 	  </div>

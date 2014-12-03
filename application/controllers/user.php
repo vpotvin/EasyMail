@@ -15,6 +15,7 @@ class User extends CI_Controller {
         // $this->load->helper('url');
     }
 
+    //displays createUser view
     public function createUser(){
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'location');
@@ -42,6 +43,7 @@ class User extends CI_Controller {
         $this->load->view("_footer", $data);
     }
 
+    //creates new user
     public function createUserProc(){
         $username = $this->input->post("username");
         $password = $this->input->post("password");

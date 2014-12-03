@@ -9,6 +9,7 @@ class Main extends CI_Controller {
 		$this->load->model('group_model');
 	}
 
+    //Makes sure the user is logged in and then displays the main view.
 	public function index(){
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS

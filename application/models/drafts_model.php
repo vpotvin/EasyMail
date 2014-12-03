@@ -14,6 +14,7 @@ class Drafts_model extends CI_Model {
         $this->load->database();
     }
 
+    //insert a new saved draft
     public function insert($sType, $sTo, $subject, $message){
     
         $data = array(
@@ -27,6 +28,7 @@ class Drafts_model extends CI_Model {
         $this->db->insert('drafts', $data);
     }
 
+    //gets all of the user's saved drafts
     public function get_drafts(){
         $uid = $this->session->userdata('logged_in')['uid'];
         $this->db->select('did');
@@ -40,6 +42,7 @@ class Drafts_model extends CI_Model {
         return $query->result_array();
     }
 
+    //gets a draft based on it's draft id - $did
     public function get_by_id($did){
         $uid = $this->session->userdata('logged_in')['uid'];
         $this->db->select('did');

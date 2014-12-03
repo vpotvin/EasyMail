@@ -11,7 +11,7 @@ class Contacts extends CI_Controller {
 	}
 
 
-
+    //displays List Contacts view
 	public function listcontacts() {
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'refresh');

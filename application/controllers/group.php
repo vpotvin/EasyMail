@@ -8,6 +8,7 @@ class Group extends CI_Controller {
 		$this->load->model('group_model');
 	}
 
+    //displays createGroup view
 	public function create(){
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
@@ -37,6 +38,7 @@ class Group extends CI_Controller {
 		// --------------------------------------------------------------------
 	}
 
+    //creaes a group
 	public function procCreate() {
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
@@ -58,6 +60,7 @@ class Group extends CI_Controller {
 		redirect("/", 'refresh');
 	}
 
+    //displays all addresses in the specified group
 	public function display($groupID){
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
 		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS

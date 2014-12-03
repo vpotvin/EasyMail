@@ -21,6 +21,7 @@ class Email extends CI_Controller {
         $this->load->helper('url');
     }
 
+    //displays compose view
     public function displayform() {
 
         if(!$this->session->userdata('logged_in')) {
@@ -48,6 +49,7 @@ class Email extends CI_Controller {
         
     }
 
+    //displays displayDraft view
     public function displayDraft($did){
 
         if(!$this->session->userdata('logged_in')) {
@@ -71,6 +73,8 @@ class Email extends CI_Controller {
         $this->load->view('displayDraft', $data);
     }
 
+
+    //sends Email from user's email address
     public function send()
     {
 

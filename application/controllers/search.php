@@ -8,6 +8,7 @@ class Search extends CI_Controller {
 		$this->load->model('email_model');
 	}
 
+    //searches for and displays email addresses matching the search term
 	public function index($search_term){
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');
