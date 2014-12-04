@@ -1,4 +1,4 @@
-
+<!--User interface for editing configuration -->
 <div class='row'>
 	<div class="col-lg-2">
             <form action="setConfigData" method="post">

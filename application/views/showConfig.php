@@ -1,3 +1,4 @@
+<!--Shows user their current email configuration-->
 <div class='col-lg-4 col-lg-offset-4'>
 	<h1>Current Configuration</h1>
 		<table class='table'>

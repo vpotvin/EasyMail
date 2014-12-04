@@ -1,4 +1,7 @@
-<?php 
+<?php
+/*
+  * Config model stores the user email configuration. The controller can request the model to set the email configuration.
+  */
 class Config_model extends CI_Model {
 
     var $cid   				= '';

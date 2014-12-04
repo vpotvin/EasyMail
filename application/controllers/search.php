@@ -1,4 +1,7 @@
 <?php
+/*
+ * Controls the display of search information and executes search function in email_model.
+ */
 class Search extends CI_Controller {
 
 	public function __construct() {
@@ -15,20 +18,19 @@ class Search extends CI_Controller {
 		} else{
 			$data["logged_in"] = true;
 		}
-				//echo "SEARCH TERM: " . $search_term . "<br />";
-				$results = $this->email_model->search($search_term);
-				foreach ($results as $r) {
-					echo "<tr>";
-					echo 	"<td>";
-					echo 		$r['email_address'];
-					echo 	"</td>";
-					echo 	"<td>";
-					echo 		"<a href='javascript:void(0)' onclick='addToGroup(this);' class='addToGroup'>Add To Group</a>";
-					echo 	"</td>";
-					echo "<tr>";
-				}
-				//echo $uid;
-				//echo $search_term;
+
+        $results = $this->email_model->search($search_term);
+        foreach ($results as $r) {
+            echo "<tr>";
+            echo 	"<td>";
+            echo 		$r['email_address'];
+            echo 	"</td>";
+            echo 	"<td>";
+            echo 		"<a href='javascript:void(0)' onclick='addToGroup(this);' class='addToGroup'>Add To Group</a>";
+            echo 	"</td>";
+            echo "<tr>";
+        }
+
 	}
 }
 ?>

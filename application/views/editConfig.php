@@ -1,3 +1,4 @@
+<!--Form by which the user can edit email configuration-->
 <div class='col-lg-4 col-lg-offset-4'>
 	<h1>Edit Configuration</h1>
 		<form action='/config/editConfigProc' method='post'>

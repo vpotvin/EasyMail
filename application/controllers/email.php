@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Victoria
- * Date: 11/24/2014
- * Time: 2:53 PM
+ * controls the display of the compose view and executes the sending of emails
  */
 
 class Email extends CI_Controller {
@@ -74,7 +71,7 @@ class Email extends CI_Controller {
     }
 
 
-    //sends Email from user's email address
+    //sends Email from user's email address, either individually or to all addresses
     public function send()
     {
 
@@ -83,11 +80,7 @@ class Email extends CI_Controller {
         } else{
             $data["logged_in"] = true;
         }
-        //I figured there needs to be a check box that that says send to all
-        //I though this functon could decide if the intention is to send to the whole list or to a couple addresses
-        //depending on that box.
-        //This function needs to take information from the form and feed it to the different sending functions depending
-        //on the situation.
+
         if($this->input->post("sendType") == 'toAll'){
             $subject = $this->input->post("subject");
             $message = $this->input->post("Editor1");
@@ -100,7 +93,7 @@ class Email extends CI_Controller {
         }
     }
 
-    //This should send email in bulk.
+    //This sends each email individually to every address on the list
     function batch_email_to_all($subject, $message)
     {
         if(!$this->session->userdata('logged_in')) {
@@ -135,12 +128,11 @@ class Email extends CI_Controller {
             $this->email->subject($subject);
             $this->email->message($message);
 
-            // Test for Failure and add to array to print out
-            // NOTIFY SUCCESS
-
             $this->email->send();
          };
     }
+
+    //sends an email to an individual
     public function send_individual($subject, $message, $send_to){
         if(!$this->session->userdata('logged_in')) {
             redirect('/login/displayform/', 'location');

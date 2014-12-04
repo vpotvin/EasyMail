@@ -1,3 +1,4 @@
+<!--Form to allow user to create a Group -->
 <div class='col-lg-4 col-lg-offset-4'>
 	<form action="/group/procCreate" method="POST" role="form" class="form-horizontal">
 		<div class="form-group">

@@ -1,3 +1,5 @@
+<!--exclusion of header and footer to accomodate RTF editor. This view allows user to edit a draft-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -148,9 +150,6 @@
 
 
 
-
-
-<!-- MOVE EVERYTHING BELOW TO EXTERNAL FILES -->
 <script>
     function sendSelect(){
         var myselect = document.getElementById("selectOption");

@@ -1,5 +1,7 @@
 <?php
-//session_start();
+/*
+ * This class exists for debugging purposes.
+ */
 class Info extends CI_Controller {
 
 	public function __construct()

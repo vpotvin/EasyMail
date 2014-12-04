@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Victoria
- * Date: 11/24/2014
- * Time: 2:53 PM
+ * Controller takes information from User Settings page and updates user_data Model
  */
 
 class Config extends CI_Controller {

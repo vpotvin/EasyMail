@@ -1,3 +1,4 @@
+<!--Shows a list of the user's saved drafts-->
 <div class="col-lg-6">
 	<table class='table table-bordered table-hover table-condensed'>
 		<thead>

@@ -1,3 +1,4 @@
+<!--User interface for uploading a list-->
 <div class='col-lg-4 col-lg-offset-4'>
 	<form action="upload/processUpload" method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
 		<div class="form-group">

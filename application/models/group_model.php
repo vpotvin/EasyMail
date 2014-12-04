@@ -1,4 +1,7 @@
 <?php
+/*
+ * Stores group information and sends information to view.
+ */
 Class group_model extends CI_Model {
     var $uid          = "";
     var $group_name   = "";

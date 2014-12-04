@@ -1,3 +1,4 @@
+<!--Notifies user of attempt to send message to bad email addresses-->
 <div class="col-lg-6">
 	<div class="panel panel-warning">
 	  <div class="panel-heading">

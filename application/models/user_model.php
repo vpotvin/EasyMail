@@ -1,4 +1,7 @@
 <?php
+/*
+ * checks and users table in database based on controller request.
+ */
 Class user_model extends CI_Model {
     function __construct() {
         parent::__construct();

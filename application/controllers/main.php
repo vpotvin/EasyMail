@@ -1,4 +1,7 @@
 <?php
+/*
+ * Displays the main view.
+ */
 class Main extends CI_Controller {
 
 	public function __construct() {

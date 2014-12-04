@@ -1,3 +1,4 @@
+<!--HTML displayed at the top of each page. Logo and navigation.-->
 <!DOCTYPE html>
 <html lang="en">
 	<head>

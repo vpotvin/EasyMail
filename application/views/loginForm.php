@@ -1,3 +1,4 @@
+<!--User interface for login-->
 <div class='col-lg-4 col-lg-offset-4'>
 	<form action="processLogin" method="POST" role="form" class="form-horizontal">
 		<div class="form-group">

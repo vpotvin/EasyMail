@@ -1,3 +1,4 @@
+<!--Main page -->
 <div class='row'>
 	<div class="col-lg-2 main_box">
 

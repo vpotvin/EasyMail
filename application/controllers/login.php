@@ -1,4 +1,8 @@
 <?php
+/*
+ * Controls the login view, and processes login credentials to either start a new session or request that the user try
+ * different credentials
+ */
 class Login extends CI_Controller {
 
 	public function __construct() {

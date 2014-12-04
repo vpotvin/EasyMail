@@ -1,4 +1,7 @@
 <?php
+/*
+ * Displays createUser controller to administrators and controls creation of users.
+ */
 
 class User extends CI_Controller {
 
@@ -7,12 +10,7 @@ class User extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user_model');
-        // $this->load->model('drafts_model');
-        // //$this->load->model('group_model'); FOR SEND TO GROUP IF IMPLEMENTED
         $this->load->library('session');
-        // $this->load->model('config_model');
-        // $this->load->helper('form');
-        // $this->load->helper('url');
     }
 
     //displays createUser view

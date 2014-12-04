@@ -1,4 +1,8 @@
 <?php
+/*
+ * Controls display of uploadForm view, processing of Uploaded Lists, confirmation of upload, and insertion of new
+ * addresses.
+ */
 class Upload extends CI_Controller {
 
 	public function __construct() {
@@ -12,7 +16,6 @@ class Upload extends CI_Controller {
     //displays uploadForm view
 	public function index(){
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
-		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'refresh');
 		} else{
@@ -21,7 +24,6 @@ class Upload extends CI_Controller {
 		// --------------------------------------------------------------------
 
 		// SET FLASH MESSAGES -------------------------------------------------
-		// THIS SHOULD PROBABLY BE MOVED TO A HELP CLASS
 		$data['flashMessages'] = [];
 		if($messages = $this->session->flashdata('flashMessages')){
 			foreach ($messages as $message) {
@@ -44,13 +46,13 @@ class Upload extends CI_Controller {
 
 	public function processUpload() {
 		// MAKE SURE USER IS LOGGED IN ----------------------------------------
-		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'refresh');
 		}else{
 			$data['logged_in'] = true;
 		}
 		// --------------------------------------------------------------------
+
 		$EmailFile = fopen($_FILES['emailFile']['tmp_name'], "r") or die("Unable to open file!");
 		$badAddr = "";
 		$dupes = "";
@@ -105,9 +107,9 @@ class Upload extends CI_Controller {
 		}
 	}
 
+    //updates the view to confirm to the user that the list has been successfully uploaded.
 	public function procConfirm() {
 	// MAKE SURE USER IS LOGGED IN ----------------------------------------
-	// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'refresh');
 		}else{
@@ -135,9 +137,6 @@ class Upload extends CI_Controller {
 		$this->group_model->insert($gid, $addr);
 		echo true;
 	}
-
-
-
 
 }
 ?>

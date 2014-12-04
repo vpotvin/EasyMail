@@ -1,4 +1,7 @@
-<?php 
+<?php
+/*
+  * Stores or sends to view email addresses
+  */
 class email_model extends CI_Model {
     var $uid            = '';
     var $email_address  = '';

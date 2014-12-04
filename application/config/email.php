@@ -1,4 +1,8 @@
 <?php
+/*Contains the user's email settings.
+ *
+ *
+ */
     $config['bcc_batch_mode'] = true;
     $config['bcc_batch_size'] = 5;
     $config['mailtype'] = 'html';

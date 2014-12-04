@@ -1,4 +1,7 @@
-<?php 
+<?php
+/*
+  * Contains functions get contacts from database.
+  */
 class Contacts_model extends CI_Model {
 
     var $emailAddr   = '';
@@ -10,13 +13,15 @@ class Contacts_model extends CI_Model {
         $this->load->database();
 
     }
-    
+
+    //return all database rows
     function get_all_rows()
     {
         $query = $this->db->get('email_addr');
         return $query->result_array();
     }
 
+    //gets all email addresses from database
     function get_all_addr(){
         $this -> db -> select('email_address');
         $this -> db -> from('email_addr');

@@ -1,3 +1,4 @@
+<!--Shows the user's groups-->
 <div class="col-lg-4 display_group">
 	<table class='table table-bordered table-hover table-condensed'>
 		<thead>

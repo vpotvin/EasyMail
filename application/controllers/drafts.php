@@ -1,6 +1,8 @@
 <?php
 
-
+/*
+ * Controls the display of the displayDrafts view and saves drafts of emails the user is writing in the compose view.
+ */
 class Drafts extends CI_Controller {
 
 
@@ -11,8 +13,7 @@ class Drafts extends CI_Controller {
         $this->load->helper('url');
         //$this->load->model('group_model'); FOR SEND TO GROUP IF IMPLEMENTED
         $this->load->library('session');
-        //$this->load->model('config_model');
-        //$this->load->helper('form');
+
     }
 
     //automatically saves email drafts

@@ -1,4 +1,7 @@
 <?php
+/*
+ * This class controls the management of the list.
+ */
 	class Listmng extends CI_Controller {
 
 		public function __construct() {
@@ -33,7 +36,7 @@
 	        $this->load->view("_footer", $data);
 		}
 
-        //Removes duplicatse from the list
+        //Removes duplicates from the list
 		public function removeDupes(){
 			if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'location');

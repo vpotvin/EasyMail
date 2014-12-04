@@ -1,5 +1,8 @@
 <?php
-//session_start();
+/*
+ * Controls the display of the Contacts view.
+ */
+
 class Contacts extends CI_Controller {
 
 	public function __construct()
@@ -32,16 +35,6 @@ class Contacts extends CI_Controller {
 		$this->load->view('listcontacts');
 		$this->load->view("_footer");
 
-
-
-		// print_r($this->session->userdata('logged_in'));
-
-
-		//$data['flashMessage'] = $this->session->flashdata('flashMessage');
-		//$this->load->view('_header', $data);
-
-		//$data = $this->contacts_model->get_all();
-		//echo $data[0]['addr'];
 	}
 }
 

@@ -1,3 +1,4 @@
+<!--Form to allow Administrator to create a user-->
 <div class='col-lg-4 col-lg-offset-4'>
 	<form action="/user/createUserProc" method="POST" role="form" class="form-horizontal">
 		<div class="form-group">

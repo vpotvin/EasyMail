@@ -1,4 +1,4 @@
-
+<!--User interface for list management-->
 <div class="col-lg-4 col-lg-offset-4">
 	<h1>Email List</h1>
 	<div class="input-group">

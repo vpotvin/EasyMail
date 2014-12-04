@@ -1,5 +1,10 @@
 <?php
-//session_start();
+
+/*
+ * Controller controls display of download form view and downloads a txt file containing the full list to the
+ * user's machine upon the user's request.
+ */
+
 class Downloads extends CI_Controller {
 
 	public function __construct()
@@ -12,34 +17,6 @@ class Downloads extends CI_Controller {
         $this->load->model("group_model");
 	}
 
-  //       public function index() {
-  //           // MAKE SURE USER IS LOGGED IN ----------------------------------------
-  //           // THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
-		// if(!$this->session->userdata('logged_in')) {
-		// 	redirect('/login/displayform/', 'refresh');
-		// } else{
-		// 	$data["logged_in"] = true;
-		// }
-		// // --------------------------------------------------------------------
-                
-  //               // SET FLASH MESSAGES -------------------------------------------------
-		// // THIS SHOULD PROBABLY BE MOVED TO A HELP CLASS
-		// $data['flashMessages'] = [];
-		// if($messages = $this->session->flashdata('flashMessages')){
-		// 	foreach ($messages as $message) {
-		// 		array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
-		// 	}
-		// }else {
-		// 	$data['flashMessages'] = null;
-		// }
-		// // --------------------------------------------------------------------
-                
-  //       // LOAD VIEWS ---------------------------------------------------------
-		// $this->load->view('_header', $data);
-  //       $this->load->view('downloadForm');
-  //       $this->load->view("_footer");
-		// // --------------------------------------------------------------------
-  //       }
 
     //Create and download text file containing the list of contacts
 	public function full() {
@@ -49,30 +26,18 @@ class Downloads extends CI_Controller {
 			$data["logged_in"] = true;
 		}
                 
-  //               // SET FLASH MESSAGES -------------------------------------------------
-		// // THIS SHOULD PROBABLY BE MOVED TO A HELP CLASS
-		// $data['flashMessages'] = [];
-		// if($messages = $this->session->flashdata('flashMessages')){
-		// 	foreach ($messages as $message) {
-		// 		array_push($data['flashMessages'], array('message' => $message[0], 'CSS'=>$message[1]));
-		// 	}
-		// }else {
-		// 	$data['flashMessages'] = null;
-		// }
-		// // --------------------------------------------------------------------
+
 
 		$randomize_file_name = rand();
         $fileName = "tempfile" . $randomize_file_name . ".txt";
  		//creates file for writing into
 		$myfile = fopen($fileName, "w");
 
-  //               //gets session informaion for the logged in user
+        //gets session informaion for the logged in user
 		$username = $this->session->userdata("logged_in")['username'];
                 
-  //               //This function is identical to calling fopen(), fwrite() and fclose() successively to write data to a file.
-  //               file_put_contents($fileName, group_model::get_addr_by_id($username), FILE_USE_INCLUDE_PATH);
-//
-		//if(!ob_start("ob_gzhandler")) ob_start();
+        //This function is identical to calling fopen(), fwrite() and fclose() successively to write data to a file.
+        //file_put_contents($fileName, group_model::get_addr_by_id($username), FILE_USE_INCLUDE_PATH);
 		header('Content-type: application/octet-stream');
 		header('Content-Disposition: attachment; filename="'. $username . '_contacts.txt"');
 
@@ -86,28 +51,11 @@ class Downloads extends CI_Controller {
 
 		fclose($myfile);
 
-
-
-		// print_r($this->session->userdata('logged_in'));
-                
-                
-
-		//$data['flashMessage'] = $this->session->flashdata('flashMessage');
-                //
-		// LOAD VIEWS ---------------------------------------------------------
-		// $this->load->view('_header', $data);
-  //               $this->load->view('downloadForm');
-  //               $this->load->view("_footer");
-		// // --------------------------------------------------------------------
-                
-  //               return $fileName;
-		//$data = $this->contacts_model->get_all();
-		//echo $data[0]['addr'];
 	}
         //Displays download view form
         public function processDownload() {
-            // MAKE SURE USER IS LOGGED IN ----------------------------------------
-		// THIS SHOULD PROBABLY BE MOVED TO A HELPER CLASS
+        // MAKE SURE USER IS LOGGED IN ----------------------------------------
+
 		if(!$this->session->userdata('logged_in')) {
 			redirect('/login/displayform/', 'refresh');
 		}else{
@@ -115,11 +63,10 @@ class Downloads extends CI_Controller {
 		}
 		// --------------------------------------------------------------------
                 
-                // LOAD VIEWS ---------------------------------------------------------
+        // LOAD VIEWS ---------------------------------------------------------
 		$this->load->view('_header', $data);
                 $this->load->view('downloadForm');
                 $this->load->view("_footer");
-		//
         }
 }
 

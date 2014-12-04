@@ -1,4 +1,7 @@
-<?php 
+<?php
+/*
+  * Stores and retrieves saved drafts.
+  */
 class Drafts_model extends CI_Model {
 
     var $did   				= '';
