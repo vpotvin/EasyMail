@@ -1,3 +1,8 @@
+EasyMail is an email list management system completed as a term project for UCO's Software Engineering I class. The project was
+completed using the CodeIgnitor Framework in PHP. 
+
+-----------------------------------------------------------------------------------
+
 Local install and setup
 
 $ means at the command line, don’t type the $
